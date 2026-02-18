@@ -1,0 +1,7 @@
+# Exclude generated files from language statistics
+lex.yy.c linguist-generated=true
+*.yy.c linguist-generated=true
+out.c linguist-generated=true
+
+# Mark .l files as Lex
+*.l linguist-language=Lex

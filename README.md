@@ -38,12 +38,15 @@ Compiler-Construction/
 │   ├── 📄 P9.l                     # Lex program 9
 │   ├── 📄 input.c                  # Sample C input file
 │   ├── 📄 input.html               # Sample HTML input file
-│   └── 📄 Input.txt                # Sample text input file
+│   ├── 📄 Input.txt                # Sample text input file
+│   ├── 📄 out.c                    # Output C file
+│   └── 📄 output.txt               # Output text file
 ├── 📂 assets/                      # Project assets
 │   └── 🖼️ CompilerDesign.png       # Project banner image
-├── 📄 README.md                    # Project documentation
+├── 📄 .gitattributes               # Git attributes for language detection
+├── 📄 .gitignore                   # Git ignore patterns (.DS_Store, compiled files, etc.)
 ├── 📄 LICENSE                      # MIT License
-└── 📄 .gitignore                   # Git ignore patterns (.DS_Store, compiled files, etc.)
+└── 📄 README.md                    # Project documentation
 ```
 
 ---
