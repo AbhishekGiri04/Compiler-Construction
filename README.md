@@ -283,7 +283,7 @@ This project is open source and available under the **MIT License** - see the [L
 
 ---
 
-**© 2025 Abhishek Giri | Compiler Construction Project**
+**© 2026 Abhishek Giri | Compiler Construction Project**
 
 *Empowering developers with practical compiler design skills*
 
