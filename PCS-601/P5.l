@@ -1,22 +1,39 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+
+int ws = 0;
+int words = 0;
+int tchar = 0;
 %}
 
-IDR [_a-zA-Z][_a-zA-Z0-9]*
-
 %%
-[,;(){}]        { printf("\nSeparator: %s", yytext); }
-[-+/%=]         { printf("\nOperator: %s", yytext); }
-int|float|double|if|else|for|while { printf("\nKeyword: %s", yytext); }
-[0-9]+          { printf("\nConstant: %s", yytext); }
-{IDR}           { printf("\nIdentifier: %s", yytext); }
-[ \t\n]+        ;
-.               { printf("\nAny other char: %s", yytext); }
+
+[a-zA-Z]+      { words++; tchar += yyleng; }
+
+[ \t\n]        { ws++; tchar++; }
+
+.              { tchar++; }
+
 %%
 
 int main()
 {
+    yyin = fopen("Input.txt", "r");
+
+    if (yyin == NULL)
+    {
+        printf("Cannot open file\n");
+        return 1;
+    }
+
     yylex();
+
+    printf("The number of total characters in the given input file is: %d\n", tchar);
+    printf("The number of total words in the given input file is: %d\n", words);
+    printf("The number of total white spaces in the given input file is: %d\n", ws);
+
+    fclose(yyin);
     return 0;
 }
 

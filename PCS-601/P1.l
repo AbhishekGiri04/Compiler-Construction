@@ -21,10 +21,10 @@ int main(void)
 {
     yylex();
 
-    printf("\nNumber of lines = %d\n", lines);
-    printf("Number of spaces = %d\n", spaces);
-    printf("Number of tabs = %d\n", tabs);
-    printf("Number of other characters = %d\n", others);
+    printf("The number of lines are: %d\n", lines);
+    printf("The number of spaces are: %d\n", spaces);
+    printf("The number of tab-meta characters are: %d\n", tabs);
+    printf("The rest of the characters are: %d\n", others);
 
     return 0;
 }

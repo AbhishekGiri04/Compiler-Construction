@@ -2,19 +2,26 @@
 #include <stdio.h>
 %}
 
-%%
-[0-9]*\.[0-9]+          { printf("Valid Floating Number: %s\n", yytext); }
-(0|[-]?[1-9][0-9]*)     { printf("Valid Integer Number: %s\n", yytext); }
-.*                      { printf("Invalid\n"); }
+IDR    [_a-zA-Z][_a-zA-Z0-9]*
+
 %%
 
-int main()
-{
+int|float|double|if|else|for|while { printf("%s is a keyword.\n", yytext); }
+[,;(){}] { printf("%s is a separator.\n", yytext); }
+[-+*/%=] { printf("%s is an operator.\n", yytext); }
+[0-9]+ { printf("%s is a constant.\n", yytext); }
+{IDR} { printf("%s is an identifier.\n", yytext); }
+[ \t\n]+ { }
+. { printf("%s is an invalid character.\n", yytext); }
+
+%%
+
+int main() {
+    printf("Write Your C Program for Tokenizing:\n");
     yylex();
     return 0;
 }
 
-int yywrap()
-{
+int yywrap() {
     return 1;
 }
