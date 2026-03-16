@@ -5,23 +5,21 @@ int count = 1;
 
 %%
 
-[-]?[0-9]+\.[0-9]+\n     {
-                           printf("%d) This is a Floating Point Number\n", count++);
-                         }
+[a-zA-Z_][a-zA-Z0-9_]* {
+    printf("%d) This is a Valid Identifier\n", count++);
+}
 
-[-]?[0-9]+\n             {
-                           printf("%d) This is an Integer Number\n", count++);
-                         }
+\n { }        /* ignore newline */
 
-.*\n                     {
-                           printf("%d) This is not a Valid Number\n", count++);
-                         }
+.* {
+    printf("%d) This is not a Valid Identifier\n", count++);
+}
 
 %%
 
 int main()
 {
-    printf("Enter numbers (Press Ctrl+D to stop):\n");
+    printf("Enter any identifier you want to check:\n");
     yylex();
     return 0;
 }

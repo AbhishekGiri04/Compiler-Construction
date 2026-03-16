@@ -7,22 +7,28 @@ FILE *out;
 
 %%
 
-\<[^>]+\>    {
-                fprintf(out, "%s\n", yytext);
-            }
+"//".* { /* Ignore single line comments */ }
 
-.|\n         { }
+"/*"([^*]|\*+[^*/])*\*+"/" { /* Ignore multi-line comments */ }
+
+.|\n { fprintf(out,"%s",yytext); }
 
 %%
 
-int main()
+int main(int argc,char *argv[])
 {
-    yyin = fopen("input.html", "r");
-    out = fopen("output.txt", "w");
-
-    if (yyin == NULL || out == NULL)
+    if(argc!=2)
     {
-        printf("File error\n");
+        printf("Usage: ./P8 input.c\n");
+        return 1;
+    }
+
+    yyin=fopen(argv[1],"r");
+    out=fopen("out.c","w");
+
+    if(yyin==NULL || out==NULL)
+    {
+        printf("File Error\n");
         return 1;
     }
 
@@ -31,7 +37,7 @@ int main()
     fclose(yyin);
     fclose(out);
 
-    printf("HTML tags extracted successfully. Check output.txt\n");
+    printf("Comments removed successfully. Check out.c\n");
     return 0;
 }
 

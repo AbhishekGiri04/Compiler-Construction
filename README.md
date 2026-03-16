@@ -7,7 +7,7 @@
 <p style="color: #2563eb; margin: 15px 0; font-size: 1.1em;">🚀 A comprehensive compiler construction project featuring practical implementations of lexical analyzers using Lex/Flex. This repository demonstrates core compiler design concepts including tokenization, pattern matching, and lexical analysis with real-world examples and hands-on practice programs.</p>
 
 <p style="font-size: 1.2em; color: #1e40af; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 20px; border-radius: 12px; max-width: 800px; margin: 20px auto; line-height: 1.6; border-left: 4px solid #2563eb;">
-🎯 <b>9 Lex Programs</b> with examples | ⚡ <b>Lexical Analysis</b> | 🔍 <b>Pattern Matching</b> | 📊 <b>Token Recognition</b>
+🎯 <b>14 Lex Programs</b> with examples | ⚡ <b>Lexical Analysis</b> | 🔍 <b>Pattern Matching</b> | 📊 <b>Token Recognition</b>
 </p>
 
 <p align="center">
@@ -26,27 +26,34 @@
 
 ```
 Compiler-Construction/
-├── 📂 PCS-601/                     # Lab practice programs
-│   ├── 📄 P1.l                     # Lex program 1
-│   ├── 📄 P2.l                     # Lex program 2
-│   ├── 📄 P3.l                     # Lex program 3
-│   ├── 📄 P4.l                     # Lex program 4
-│   ├── 📄 P5.l                     # Lex program 5
-│   ├── 📄 P6.l                     # Lex program 6
-│   ├── 📄 P7.l                     # Lex program 7
-│   ├── 📄 P8.l                     # Lex program 8
-│   ├── 📄 P9.l                     # Lex program 9
-│   ├── 📄 input.c                  # Sample C input file
-│   ├── 📄 input.html               # Sample HTML input file
-│   ├── 📄 Input.txt                # Sample text input file
-│   ├── 📄 out.c                    # Output C file
-│   └── 📄 output.txt               # Output text file
-├── 📂 assets/                      # Project assets
-│   └── 🖼️ CompilerDesign.png       # Project banner image
-├── 📄 .gitattributes               # Git attributes for language detection
-├── 📄 .gitignore                   # Git ignore patterns (.DS_Store, compiled files, etc.)
-├── 📄 LICENSE                      # MIT License
-└── 📄 README.md                    # Project documentation
+├── 📂 PCS-601/                         # Lab practice programs
+│   ├── 📄 P1.txt                       # Lex program 1 (text)
+│   ├── 📄 P2.l                         # Lex program 2
+│   ├── 📄 P3.l                         # Lex program 3
+│   ├── 📄 P4.l                         # Lex program 4
+│   ├── 📄 P5.l                         # Lex program 5
+│   ├── 📄 P6.l                         # Lex program 6
+│   ├── 📄 P7.l                         # Lex program 7
+│   ├── 📄 P8.l                         # Lex program 8
+│   ├── 📄 P9.l                         # Lex program 9
+│   ├── 📄 P10.l                        # Lex program 10
+│   ├── 📄 P11.l                        # Lex program 11
+│   ├── 📄 P12.l                        # Lex program 12
+│   ├── 📄 P13.l                        # Lex program 13
+│   ├── 📄 P14.l                        # Lex program 14
+│   ├── 📄 input.c                      # Sample C input file
+│   ├── 📄 input.txt                    # Sample text input file
+│   ├── 📄 sample.html                  # Sample HTML input file
+│   ├── 📄 tags.txt                     # HTML tags reference
+│   ├── 📄 out.c                        # Output C file
+│   ├── 📄 Output.txt                   # Output text file
+│   └── 📄 CompilerDesignLabManual.pdf  # Lab manual documentation
+├── 📂 assets/                          # Project assets
+│   └── 🖼️ CompilerDesign.png           # Project banner image
+├── 📄 .gitattributes                   # Git attributes for language detection
+├── 📄 .gitignore                       # Git ignore patterns (.DS_Store, compiled files, etc.)
+├── 📄 LICENSE                          # MIT License
+└── 📄 README.md                        # Project documentation
 ```
 
 ---
@@ -228,7 +235,7 @@ Common token categories:
 
 ---
 
-## 🤝 Contributing
+## 🤝🏻 Contributing
 
 Contributions are welcome! Feel free to:
 

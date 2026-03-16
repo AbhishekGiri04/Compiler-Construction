@@ -1,39 +1,32 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
-
-int ws = 0;
-int words = 0;
-int tchar = 0;
 %}
+
+/* Definition */
+IDR    [_a-zA-Z][_a-zA-Z0-9]*
 
 %%
 
-[a-zA-Z]+      { words++; tchar += yyleng; }
+int|float|double|if|else|for|while { printf("%s is a keyword.\n", yytext); }
 
-[ \t\n]        { ws++; tchar++; }
+[,;(){}] { printf("%s is a separator.\n", yytext); }
 
-.              { tchar++; }
+[-+*/%=] { printf("%s is an operator.\n", yytext); }
+
+[0-9]+ { printf("%s is a constant.\n", yytext); }
+
+{IDR} { printf("%s is an identifier.\n", yytext); }
+
+[ \t\n]+ { }   /* ignore whitespace */
+
+. { printf("%s is an invalid character.\n", yytext); }
 
 %%
 
 int main()
 {
-    yyin = fopen("Input.txt", "r");
-
-    if (yyin == NULL)
-    {
-        printf("Cannot open file\n");
-        return 1;
-    }
-
+    printf("Write Your C Program for Tokenizing:\n");
     yylex();
-
-    printf("The number of total characters in the given input file is: %d\n", tchar);
-    printf("The number of total words in the given input file is: %d\n", words);
-    printf("The number of total white spaces in the given input file is: %d\n", ws);
-
-    fclose(yyin);
     return 0;
 }
 

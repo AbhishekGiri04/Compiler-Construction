@@ -1,35 +1,42 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-int yywrap() {
-    return 1;
-}
 %}
 
-DIGIT   [0-9]+
+/* Definitions */
+
+DIGIT      [0-9]
+LETTER     [a-zA-Z_]
+ID         {LETTER}({LETTER}|{DIGIT})*
+NUMBER     {DIGIT}+
+STRING     \"[^\"]*\"
+CHARLIT    \'[^\']\'
 
 %%
 
-{DIGIT} {
-            int num = atoi(yytext);
-            if(num % 2 == 0)
-                printf("%s is an even number.\n", yytext);
-            else
-                printf("%s is an odd number.\n", yytext);
-        }
+int|float|double|char|if|else|for|while|return|void { printf("KEYWORD : %s\n", yytext); }
 
-[0-9]+[a-zA-Z]+[a-zA-Z0-9]* {
-            printf("%s is not a valid number.\n", yytext);
-        }
+{STRING} { printf("STRING : %s\n", yytext); }
 
-.|\n   ;
+{CHARLIT} { printf("LITERAL : %s\n", yytext); }
+
+{NUMBER} { printf("CONSTANT : %s\n", yytext); }
+
+{ID} { printf("IDENTIFIER : %s\n", yytext); }
+
+[ \t\n]+ { }   /* Ignore spaces */
+
+. { printf("UNKNOWN : %s\n", yytext); }
 
 %%
 
-int main() {
-    printf("Enter a string: ");
+int main()
+{
+    printf("Enter C code (Press Ctrl+D to stop):\n");
     yylex();
     return 0;
+}
+
+int yywrap()
+{
+    return 1;
 }

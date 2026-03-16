@@ -2,44 +2,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE *out;
-int space_flag = 0;
+int ws = 0;
+int words = 0;
+int tchar = 0;
 %}
 
 %%
 
-[ \t\n]+    {
-                if (!space_flag)
-                {
-                    fprintf(out, " ");
-                    space_flag = 1;
-                }
-            }
+[a-zA-Z]+ { words++; tchar += yyleng; }
 
-[^ \t\n]+   {
-                fprintf(out, "%s", yytext);
-                space_flag = 0;
-            }
+[ \t\n] { ws++; tchar++; }
+
+. { tchar++; }
 
 %%
 
 int main()
 {
-    yyin = fopen("Input.txt", "r");
-    out = fopen("Output.txt", "w");
+    yyin = fopen("Input.txt","r");
 
-    if (yyin == NULL || out == NULL)
+    if(yyin == NULL)
     {
-        printf("Error opening file\n");
+        printf("Cannot open file\n");
         return 1;
     }
 
     yylex();
 
-    fclose(yyin);
-    fclose(out);
+    printf("The number of total characters in the given input file is: %d\n", tchar);
+    printf("The number of total words in the given input file is: %d\n", words);
+    printf("The number of total white spaces in the given input file is: %d\n", ws);
 
-    printf("White spaces replaced successfully. Check Output.txt\n");
+    fclose(yyin);
     return 0;
 }
 

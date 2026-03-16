@@ -1,0 +1,132 @@
+STUDY OF LEX AND YACC TOOLS
+
+1. Introduction to LEX
+   LEX is a tool used to generate a lexical analyzer. A lexical analyzer is the first phase of a compiler. It reads the source program and converts it into a sequence of tokens. LEX works with regular expressions to define patterns for tokens. It automatically generates a C program that performs lexical analysis.
+
+LEX is generally used with the YACC parser generator. LEX identifies tokens such as identifiers, keywords, constants, operators, and separators.
+
+Steps of working of LEX:
+
+1. The user writes a LEX specification file with extension (.l).
+
+2. The LEX tool processes this file.
+
+3. It generates a C source file called lex.yy.c.
+
+4. The C compiler compiles lex.yy.c to produce an executable scanner.
+
+5. Structure of LEX Program
+
+A LEX program consists of three main sections:
+
+Definition Section
+This section contains declarations, header files, and definitions. It is written between %{ and %}. Example:
+%{
+#include <stdio.h>
+%}
+
+Rules Section
+This section contains patterns and corresponding actions. Patterns are written using regular expressions. When a pattern matches the input, the corresponding action is executed.
+
+Example:
+[0-9]+      printf("Number");
+[a-zA-Z]+   printf("Word");
+
+User Subroutine Section
+This section contains additional C functions such as main() and yywrap().
+
+Example:
+int main()
+{
+yylex();
+return 0;
+}
+
+3. Regular Expressions in LEX
+
+Regular expressions are used to define patterns in LEX. Some common regular expressions are:
+
+a          matches the character a
+.          matches any single character
+
+*          matches zero or more occurrences 
+
++          matches one or more occurrences  
+
+?          matches zero or one occurrence
+[a-z]      matches any lowercase letter
+[A-Z]      matches any uppercase letter
+[0-9]      matches digits
+^          beginning of line
+$          end of line
+
+Example:
+[0-9]+ means one or more digits.
+
+4. Predefined Patterns in LEX
+
+Some common predefined patterns used in LEX are:
+
+[a-zA-Z]                alphabet characters
+[0-9]                   digits
+[a-zA-Z][a-zA-Z0-9]*    identifiers
+[ \t\n]                 whitespace characters
+".*"                  string constants
+
+These patterns help in identifying tokens in the input program.
+
+5. Auxiliary Functions in LEX
+
+LEX provides several predefined functions and variables:
+
+yylex()
+This function starts the lexical analyzer and scans the input.
+
+yywrap()
+This function is called when the end of input is reached. It usually returns 1.
+
+yytext
+This variable contains the matched string.
+
+yyleng
+This variable contains the length of the matched string.
+
+6. Introduction to YACC
+
+YACC stands for Yet Another Compiler Compiler. It is a tool used to generate a parser. A parser checks whether the input tokens follow the grammatical rules of the language.
+
+YACC works together with LEX. LEX produces tokens and YACC analyzes those tokens according to grammar rules.
+
+7. Structure of YACC Program
+
+A YACC program consists of three sections:
+
+Declarations Section
+This section contains token declarations and variable definitions.
+
+Example:
+%token NUMBER
+
+Rules Section
+This section contains grammar rules for the language.
+
+Example:
+expr : expr '+' expr
+| expr '*' expr
+| NUMBER
+;
+
+Programs Section
+This section contains additional C code including the main() function and helper functions.
+
+Example:
+int main()
+{
+yyparse();
+}
+
+Here yyparse() is used to start the parser.
+
+8. Conclusion
+
+LEX and YACC are powerful tools used in compiler construction. LEX generates lexical analyzers using regular expressions, while YACC generates syntax analyzers using grammar rules. Together they help in building a complete compiler front end.

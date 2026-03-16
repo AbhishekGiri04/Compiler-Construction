@@ -1,51 +1,49 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+
+FILE *out;
 %}
 
-/* Definitions */
-DIGIT      [0-9]
-LETTER     [a-zA-Z_]
-ID         {LETTER}({LETTER}|{DIGIT})*
-NUMBER     {DIGIT}+
-STRING     \"[^\"]*\"
-CHARLIT    \'[^\']\'
+%%
+
+\<[^>]+\> {
+    fprintf(out,"%s\n",yytext);
+}
+
+.|\n { }
 
 %%
 
-int|float|double|char|if|else|for|while|return|void {
-    printf("KEYWORD : %s\n", yytext);
-}
+int main()
+{
+    char infile[50], outfile[50];
 
-{STRING} {
-    printf("STRING : %s\n", yytext);
-}
+    printf("Enter HTML input file name: ");
+    scanf("%s", infile);
 
-{CHARLIT} {
-    printf("LITERAL : %s\n", yytext);
-}
+    printf("Enter output text file name: ");
+    scanf("%s", outfile);
 
-{NUMBER} {
-    printf("CONSTANT : %s\n", yytext);
-}
+    yyin = fopen(infile,"r");
+    out = fopen(outfile,"w");
 
-{ID} {
-    printf("IDENTIFIER : %s\n", yytext);
-}
+    if(yyin == NULL || out == NULL)
+    {
+        printf("Error opening file\n");
+        return 1;
+    }
 
-[ \t\n]+ { }   /* Ignore whitespace */
-
-. {
-    printf("UNKNOWN : %s\n", yytext);
-}
-
-%%
-
-int yywrap() {
-    return 1;
-}
-
-int main() {
-    printf("Enter C code (Press Ctrl+D to stop):\n");
     yylex();
+
+    fclose(yyin);
+    fclose(out);
+
+    printf("HTML tags extracted successfully.\n");
     return 0;
+}
+
+int yywrap()
+{
+    return 1;
 }

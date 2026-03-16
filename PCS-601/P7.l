@@ -3,30 +3,32 @@
 #include <stdlib.h>
 
 FILE *out;
+int space_flag = 0;
 %}
 
 %%
 
-"//".*                    { /* remove single-line comment */ }
+[ \t\n]+ {
+    if(!space_flag)
+    {
+        fprintf(out," ");
+        space_flag = 1;
+    }
+}
 
-"/*"([^*]|\*+[^*/])*\*+"/" { /* remove multi-line comment */ }
-
-.|\n                      { fprintf(out, "%s", yytext); }
+[^ \t\n]+ {
+    fprintf(out,"%s",yytext);
+    space_flag = 0;
+}
 
 %%
 
-int main(int argc, char *argv[])
+int main()
 {
-    if (argc != 2)
-    {
-        printf("Usage: ./P7 inputfile.c\n");
-        return 1;
-    }
+    yyin = fopen("Input.txt","r");
+    out = fopen("Output.txt","w");
 
-    yyin = fopen(argv[1], "r");
-    out = fopen("out.c", "w");
-
-    if (yyin == NULL || out == NULL)
+    if(yyin == NULL || out == NULL)
     {
         printf("Error opening file\n");
         return 1;
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
     fclose(yyin);
     fclose(out);
 
-    printf("Comments removed successfully. Check out.c\n");
+    printf("White spaces replaced successfully. Check Output.txt\n");
     return 0;
 }
 
