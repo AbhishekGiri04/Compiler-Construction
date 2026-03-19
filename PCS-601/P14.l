@@ -1,32 +1,42 @@
 %{
 #include <stdio.h>
-int a=0, b=0;
 %}
 
-%%
-
-a       { a++; }
-b       { b++; }
-\n      {
-            if(a%2==0 && b%2==0)
-                printf("Accepted\n");
-            else
-                printf("Not Accepted\n");
-            a=0; b=0;
-        }
-
-.       { }  /* ignore other characters */
+%s A B C DEAD
 
 %%
 
-int main()
-{
-    printf("Enter strings (Press Enter for new line, Ctrl+D to stop):\n");
+<INITIAL>a { BEGIN A; }
+<INITIAL>b { BEGIN C; }
+<INITIAL>\n { printf("Accepted\n"); }
+<INITIAL>[^ab\n] { BEGIN DEAD; }
+
+<A>a { BEGIN INITIAL; }
+<A>b { BEGIN B; }
+<A>\n { printf("Not Accepted\n"); BEGIN INITIAL; }
+<A>[^ab\n] { BEGIN DEAD; }
+
+<B>a { BEGIN C; }
+<B>b { BEGIN A; }
+<B>\n { printf("Not Accepted\n"); BEGIN INITIAL; }
+<B>[^ab\n] { BEGIN DEAD; }
+
+<C>a { BEGIN B; }
+<C>b { BEGIN INITIAL; }
+<C>\n { printf("Not Accepted\n"); BEGIN INITIAL; }
+<C>[^ab\n] { BEGIN DEAD; }
+
+<DEAD>[^\n] { BEGIN DEAD; }
+<DEAD>\n { printf("Not Accepted\n"); BEGIN INITIAL; }
+
+%%
+
+int main() {
+    printf("Enter the string:\n");
     yylex();
     return 0;
 }
 
-int yywrap()
-{
+int yywrap() {
     return 1;
 }
