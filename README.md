@@ -7,7 +7,7 @@
 <p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>15 Lex/Flex programs</b> covering tokenization, pattern matching, DFA simulation, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
 
 <p style="font-size: 1.2em; color: #bf360c; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 20px; border-radius: 12px; max-width: 800px; margin: 20px auto; line-height: 1.6; border-left: 4px solid #e65100;">
-🧩 <b>15 Lex Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 📄 <b>C Implementation</b>
+📚 <b>15 Lex Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 📄 <b>C Implementation</b>
 </p>
 
 <p align="center">
@@ -70,7 +70,7 @@ Compiler-Construction/
 
 ---
 
-## 🧪 PCS-601 — Lab Programs
+## 💻 PCS-601 — Lab Programs
 
 ### 📖 Theory
 
@@ -107,7 +107,7 @@ Compiler-Construction/
 | 8 | [P8.l](PCS-601/P8.l) | Reads a `.c` file — strips `//` and `/* */` comments, writes to `out.c` |
 | 9 | [P9.l](PCS-601/P9.l) | Reads an HTML file — extracts all `<tags>` into an output file |
 
-#### 🤖 DFA Simulation
+#### 🧠 DFA Simulation
 
 | # | 📄 File | 📚 Concept |
 |---|---------|------------|
@@ -227,7 +227,7 @@ After exploring this project, you will understand:
 
 - **📄 15 Lex Programs** — Covering a wide range of compiler design concepts
 - **📚 Educational** — Clear, well-structured code with progressive difficulty
-- **🤖 DFA Simulation** — Real finite automata implemented using Lex states
+- **🧠 DFA Simulation** — Real finite automata implemented using Lex states
 - **🔧 Modular** — Separate `.l` file for each concept, easy to explore
 - **⚙️ Zero Setup** — Just Flex + GCC, no extra dependencies
 - **💡 Learning-Focused** — Step-by-step progression from basics to DFA simulation
