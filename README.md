@@ -2,9 +2,13 @@
 
 <img src="assets/CompilerDesign.png" alt="Compiler Construction Project Banner" width="100%" style="margin-bottom: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"/>
 
-# 🔧 Compiler Construction — Lexical Analysis & Parsing Fundamentals
+<h1>🔧 Compiler Construction — Lexical Analysis & Parsing Fundamentals</h1>
 
-> 🚀 A hands-on compiler construction lab repository featuring **15 Lex/Flex programs** covering tokenization, pattern matching, DFA simulation, and real-world lexical analysis — built as part of the **PCS-601 Compiler Design** curriculum.
+<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>15 Lex/Flex programs</b> covering tokenization, pattern matching, DFA simulation, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
+
+<p style="font-size: 1.2em; color: #bf360c; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 20px; border-radius: 12px; max-width: 800px; margin: 20px auto; line-height: 1.6; border-left: 4px solid #e65100;">
+🧩 <b>15 Lex Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 📄 <b>C Implementation</b>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Lex-Flex-FF6B6B?style=for-the-badge&logo=gnu&logoColor=white"/>
@@ -70,26 +74,43 @@ Compiler-Construction/
 
 ### 📖 Theory
 
-| # | File | Topic |
-|---|------|-------|
+| # | 📄 File | 📚 Topic |
+|---|---------|----------|
 | 1 | [P1.txt](PCS-601/P1.txt) | Study of Lex & Yacc — tools, structure, workflow |
 
 ### ⚙️ Lex Programs
 
-| # | File | What It Does |
-|---|------|--------------|
+#### 🔤 Basics & Counting
+
+| # | 📄 File | 📚 Concept |
+|---|---------|------------|
 | 2 | [P2.l](PCS-601/P2.l) | Counts lines (`\n`), spaces, tabs, and other characters from stdin |
 | 3 | [P3.l](PCS-601/P3.l) | Validates whether input strings are valid C identifiers |
 | 4 | [P4.l](PCS-601/P4.l) | Classifies input as integer, floating point, or invalid number |
+| 11 | [P11.l](PCS-601/P11.l) | Reads a number — prints whether it is even or odd |
+| 12 | [P12.l](PCS-601/P12.l) | Counts total vowels and consonants in the entered string |
+
+#### 🔍 Tokenization & Validation
+
+| # | 📄 File | 📚 Concept |
+|---|---------|------------|
 | 5 | [P5.l](PCS-601/P5.l) | Tokenizes C code into keywords, separators, operators, constants, identifiers |
+| 10 | [P10.l](PCS-601/P10.l) | Advanced tokenizer — classifies KEYWORD, STRING, LITERAL, CONSTANT, IDENTIFIER |
+| 13 | [P13.l](PCS-601/P13.l) | Validates email addresses using regex pattern matching |
+
+#### 📂 File I/O & Processing
+
+| # | 📄 File | 📚 Concept |
+|---|---------|------------|
 | 6 | [P6.l](PCS-601/P6.l) | Reads `Input.txt` — counts total characters, words, and whitespaces |
 | 7 | [P7.l](PCS-601/P7.l) | Reads `Input.txt` — compresses multiple spaces into one, writes to `Output.txt` |
 | 8 | [P8.l](PCS-601/P8.l) | Reads a `.c` file — strips `//` and `/* */` comments, writes to `out.c` |
 | 9 | [P9.l](PCS-601/P9.l) | Reads an HTML file — extracts all `<tags>` into an output file |
-| 10 | [P10.l](PCS-601/P10.l) | Advanced tokenizer — classifies KEYWORD, STRING, LITERAL, CONSTANT, IDENTIFIER |
-| 11 | [P11.l](PCS-601/P11.l) | Reads a number — prints whether it is even or odd |
-| 12 | [P12.l](PCS-601/P12.l) | Counts total vowels and consonants in the entered string |
-| 13 | [P13.l](PCS-601/P13.l) | Validates email addresses using regex pattern matching |
+
+#### 🤖 DFA Simulation
+
+| # | 📄 File | 📚 Concept |
+|---|---------|------------|
 | 14 | [P14.l](PCS-601/P14.l) | DFA simulation — accepts strings with even number of `a`'s and `b`'s |
 | 15 | [P15.l](PCS-601/P15.l) | DFA-based classifier — identifies integers, floats, and identifiers using states |
 
@@ -148,81 +169,120 @@ flex P9.l && gcc lex.yy.c -o P9 -ll && ./P9
 # Enter: sample.html → then output filename
 ```
 
+> No external dependencies — just Flex, GCC, and a terminal.
+
+---
+
+## 🎓 Learning Outcomes
+
+After exploring this project, you will understand:
+
+✅ **Lex File Structure** — Definitions, rules, and user code sections  
+✅ **Regex Patterns** — Writing patterns for token recognition  
+✅ **Lexical Analysis** — Tokenizing C source code end-to-end  
+✅ **DFA Simulation** — Implementing states with `%s` and `BEGIN`  
+✅ **Comment Stripping** — Removing `//` and `/* */` from C programs  
+✅ **File I/O in Lex** — Using `yyin`, `yyout`, `fopen`, `fprintf`  
+✅ **Regex Validation** — Email addresses, identifiers, numbers  
+✅ **HTML Processing** — Extracting tags from real HTML files  
+
 ---
 
 ## 🛠️ Tech Stack
 
 <div align="center">
 
-| Technology | Purpose |
-|------------|---------|
-| ![Flex](https://img.shields.io/badge/Flex-Lex-FF6B6B?style=for-the-badge&logo=gnu&logoColor=white) | Lexical analyzer generator — pattern matching & token generation |
-| ![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white) | Implementation language for all programs |
-| ![GCC](https://img.shields.io/badge/GCC-Compiler-4CAF50?style=for-the-badge) | Compiles the Lex-generated C code into executables |
+<table>
+<thead>
+<tr>
+<th>🖥️ Technology</th>
+<th>⚙️ Purpose</th>
+<th>📊 What's Covered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://img.shields.io/badge/Flex-Lex-FF6B6B?style=for-the-badge&logo=gnu&logoColor=white"/></td>
+<td>Lexical Analyzer Generator</td>
+<td>Pattern matching, token generation, DFA states, start conditions</td>
+</tr>
+<tr>
+<td><img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white"/></td>
+<td>Implementation Language</td>
+<td>All programs, file I/O, user code sections, yywrap()</td>
+</tr>
+<tr>
+<td><img src="https://img.shields.io/badge/GCC-Compiler-4CAF50?style=for-the-badge"/></td>
+<td>Compilation</td>
+<td>Compiles Lex-generated C code into runnable executables</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 ---
 
-## 🎓 What You'll Learn
+## 🌟 Key Features
 
-```
-Lex / Flex
- ├─ Lex file structure — definitions, rules, user code sections
- ├─ Writing regex patterns for token recognition
- ├─ Using yytext, yyleng, yyin, yyout
- └─ yywrap(), BEGIN, and start conditions
-
-Lexical Analysis
- ├─ Tokenizing C source code
- ├─ Identifier and number validation
- ├─ Comment stripping from C programs
- ├─ HTML tag extraction
- └─ Email address validation with regex
-
-DFA Simulation
- ├─ Implementing states with %s and BEGIN
- ├─ Accepting strings with even a's and b's (P14)
- └─ Multi-state integer / float / identifier classifier (P15)
-
-File I/O in Lex
- ├─ Reading from files using yyin = fopen(...)
- ├─ Writing output using fprintf(out, ...)
- └─ Command-line argument handling (argc, argv)
-```
+- **📄 15 Lex Programs** — Covering a wide range of compiler design concepts
+- **📚 Educational** — Clear, well-structured code with progressive difficulty
+- **🤖 DFA Simulation** — Real finite automata implemented using Lex states
+- **🔧 Modular** — Separate `.l` file for each concept, easy to explore
+- **⚙️ Zero Setup** — Just Flex + GCC, no extra dependencies
+- **💡 Learning-Focused** — Step-by-step progression from basics to DFA simulation
 
 ---
 
-## 📬 Contact
+## 📞 Contact & Support
 
 <div align="center">
 
-**👤 Abhishek Giri** — Creator & Maintainer
+> 💬 *Questions about this project?*  
+> Feel free to reach out for help or collaboration!
 
 <br/>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/abhishek-giri04)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/abhishekgiri04)
-[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:abhishekgiri.dev@gmail.com)
+**👤 Abhishek Giri** — Creator & Maintainer
+
+<a href="https://linkedin.com/in/abhishek-giri04">
+  <img src="https://img.shields.io/badge/Connect%20on-LinkedIn-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/>
+</a>  
+<a href="https://github.com/abhishekgiri04">
+  <img src="https://img.shields.io/badge/Follow%20on-GitHub-100000?style=for-the-badge&logo=github" alt="GitHub"/>
+</a>  
+<a href="mailto:abhishekgiri.dev@gmail.com">
+  <img src="https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail" alt="Email"/>
+</a>
 
 </div>
 
 ---
 
+<div align="center">
+
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+This project is open source and available under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<div align="center">
+**🔧 Built with ❤️ for Learning Compiler Design**  
+*Mastering Lex, Flex & C from the ground up*
 
-**🔧 Compiler Construction — Learn the Stack. Build the Compiler.**
+<p style="font-size: 1.1em; color: #bf360c; margin: 20px 0;">
+<b>Compiler Construction</b> — Lexical Analysis & Parsing Fundamentals<br/>
+<em>Building strong foundations in compiler design</em>
+</p>
 
-[![Made with Lex & C](https://img.shields.io/badge/Made%20with-Lex%20%26%20C-FF6B6B?style=for-the-badge)]()
-[![For Learning](https://img.shields.io/badge/Purpose-Learning-4CAF50?style=for-the-badge)]()
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-blueviolet?style=for-the-badge)]()
+---
 
-*© 2026 Abhishek Giri · Compiler Construction*
+**© 2026 Abhishek Giri | Compiler Construction**
+
+*Empowering developers with practical compiler design skills*
+
+<img src="https://img.shields.io/badge/Made%20with-Lex%20%26%20C-FF6B6B?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Purpose-Learning-4CAF50?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/PRs-Welcome-blueviolet?style=for-the-badge"/>
 
 </div>
