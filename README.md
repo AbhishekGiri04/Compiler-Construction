@@ -4,18 +4,19 @@
 
 <h1>🔧 Compiler Construction — Lexical Analysis & Parsing Fundamentals</h1>
 
-<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>17 Lex/Flex programs</b> covering tokenization, pattern matching, DFA simulation, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
+<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>18 Lex/Flex & Yacc programs</b> covering tokenization, pattern matching, DFA simulation, parsing, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
 
 <p style="font-size: 1.2em; color: #bf360c; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 20px; border-radius: 12px; max-width: 800px; margin: 20px auto; line-height: 1.6; border-left: 4px solid #e65100;">
-📚 <b>17 Lex Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 📄 <b>C Implementation</b>
+📚 <b>18 Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 🌳 <b>Yacc Parsing</b> | 📄 <b>C Implementation</b>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Lex-Flex-FF6B6B?style=for-the-badge&logo=gnu&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Yacc-Bison-9C27B0?style=for-the-badge&logo=gnu&logoColor=white"/>
   <img src="https://img.shields.io/badge/C-Programming-00599C?style=for-the-badge&logo=c&logoColor=white"/>
   <img src="https://img.shields.io/badge/Compiler-Design-4CAF50?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Lexical-Analysis-FF9800?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Programs-17-blueviolet?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Programs-18-blueviolet?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge"/>
 </p>
@@ -51,6 +52,12 @@ Compiler-Construction/
 │   ├── 📄 P15.l                         # DFA-based integer, float & identifier classifier
 │   ├── 📄 P16.l                         # DFA — accept strings with odd a's or odd b's
 │   ├── 📄 P17.l                         # DFA — accept strings matching pattern abb(a|b)*
+│   │
+│   ├── ── Lex + Yacc Programs ──
+│   ├── 📄 P18.l                         # Lexer for arithmetic expression validator
+│   ├── 📄 P18.y                         # Yacc grammar — validates arithmetic expressions
+│   ├── 📄 P18.tab.c                     # Auto-generated Yacc C output (do not edit)
+│   ├── 📄 P18.tab.h                     # Auto-generated Yacc header (do not edit)
 │   │
 │   ├── ── Input / Output Files ──
 │   ├── 📄 Input.txt                     # Sample text input (used by P6, P7)
@@ -118,6 +125,12 @@ Compiler-Construction/
 | 16 | [P16.l](PCS-601/P16.l) | DFA simulation — accepts strings with odd number of `a`'s or odd number of `b`'s |
 | 17 | [P17.l](PCS-601/P17.l) | DFA simulation — accepts strings matching pattern `abb(a\|b)*` |
 
+### 🌳 Lex + Yacc Programs
+
+| # | 📄 Files | 📚 Concept |
+|---|---------|------------|
+| 18 | [P18.l](PCS-601/P18.l) + [P18.y](PCS-601/P18.y) | Arithmetic expression validator using Lex tokenizer + Yacc grammar parser |
+
 ---
 
 ## 🚀 Getting Started
@@ -125,20 +138,21 @@ Compiler-Construction/
 ### Prerequisites
 
 - **Flex** — Lexical analyzer generator
+- **Bison / Yacc** — Parser generator
 - **GCC** — GNU C Compiler
 - **Unix / Linux / macOS** terminal
 
-### Install Flex
+### Install Flex & Bison
 
 ```bash
 # macOS
-brew install flex
+brew install flex bison
 
 # Ubuntu / Debian
-sudo apt-get install flex
+sudo apt-get install flex bison
 
 # Verify
-flex --version
+flex --version && bison --version
 ```
 
 ### Run Any Program
@@ -171,9 +185,16 @@ flex P8.l && gcc lex.yy.c -o P8 -ll && ./P8 input.c
 # P9 — extracts HTML tags (prompts for filenames)
 flex P9.l && gcc lex.yy.c -o P9 -ll && ./P9
 # Enter: sample.html → then output filename
+
+# P18 — Lex + Yacc arithmetic expression validator
+bison -d P18.y                          # generates P18.tab.c and P18.tab.h
+flex P18.l                              # generates lex.yy.c
+gcc P18.tab.c lex.yy.c -o P18 -ll      # compile both
+./P18
+# Enter: 3+5*(2-1)
 ```
 
-> No external dependencies — just Flex, GCC, and a terminal.
+> No external dependencies — just Flex, Bison/Yacc, and GCC.
 
 ---
 
@@ -189,6 +210,8 @@ After exploring this project, you will understand:
 ✅ **File I/O in Lex** — Using `yyin`, `yyout`, `fopen`, `fprintf`  
 ✅ **Regex Validation** — Email addresses, identifiers, numbers  
 ✅ **HTML Processing** — Extracting tags from real HTML files  
+✅ **Yacc / Bison** — Writing grammars, tokens, and expression parsers  
+✅ **Lex + Yacc Integration** — Connecting a lexer and parser end-to-end  
 
 ---
 
@@ -216,9 +239,14 @@ After exploring this project, you will understand:
 <td>All programs, file I/O, user code sections, yywrap()</td>
 </tr>
 <tr>
+<td><img src="https://img.shields.io/badge/Bison-Yacc-9C27B0?style=for-the-badge&logo=gnu&logoColor=white"/></td>
+<td>Parser Generator</td>
+<td>Grammar rules, token definitions, expression parsing (P18)</td>
+</tr>
+<tr>
 <td><img src="https://img.shields.io/badge/GCC-Compiler-4CAF50?style=for-the-badge"/></td>
 <td>Compilation</td>
-<td>Compiles Lex-generated C code into runnable executables</td>
+<td>Compiles Lex/Yacc-generated C code into runnable executables</td>
 </tr>
 </tbody>
 </table>
@@ -229,12 +257,13 @@ After exploring this project, you will understand:
 
 ## 🌟 Key Features
 
-- **📄 17 Lex Programs** — Covering a wide range of compiler design concepts
+- **📄 18 Programs** — 17 Lex + 1 Lex/Yacc, covering a wide range of compiler design concepts
 - **📚 Educational** — Clear, well-structured code with progressive difficulty
 - **🧠 DFA Simulation** — Real finite automata implemented using Lex states
-- **🔧 Modular** — Separate `.l` file for each concept, easy to explore
-- **⚙️ Zero Setup** — Just Flex + GCC, no extra dependencies
-- **💡 Learning-Focused** — Step-by-step progression from basics to DFA simulation
+- **🌳 Yacc Parsing** — Arithmetic expression grammar with Lex + Yacc integration (P18)
+- **🔧 Modular** — Separate `.l` / `.y` file for each concept, easy to explore
+- **⚙️ Minimal Setup** — Just Flex, Bison/Yacc, and GCC
+- **💡 Learning-Focused** — Step-by-step progression from basics to parsing
 
 ---
 
