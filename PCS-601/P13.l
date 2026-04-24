@@ -4,11 +4,20 @@
 
 %%
 
-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z]+      { printf("%s is a valid email.\n", yytext); }
+/* Valid Email */
+^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]+$ 
+{
+    printf("%s is a valid email.\n", yytext);
+}
 
-[^ \t\n]+                                                   { printf("%s is not a valid email.\n", yytext); }
+/* Invalid Email */
+^.*$ 
+{
+    printf("%s is not a valid email.\n", yytext);
+}
 
-[ \t\n]+                                                    { /* ignore whitespace */ }
+/* Ignore newline */
+\n { }
 
 %%
 

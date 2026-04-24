@@ -13,19 +13,44 @@ CHARLIT    \'[^\']\'
 
 %%
 
-int|float|double|char|if|else|for|while|return|void { printf("KEYWORD : %s\n", yytext); }
+/* Keywords (must come before ID) */
+int|float|double|char|if|else|for|while|return|void
+{
+    printf("KEYWORD : %s\n", yytext);
+}
 
-{STRING} { printf("STRING : %s\n", yytext); }
+/* String literals */
+{STRING}
+{
+    printf("STRING : %s\n", yytext);
+}
 
-{CHARLIT} { printf("LITERAL : %s\n", yytext); }
+/* Character literals */
+{CHARLIT}
+{
+    printf("LITERAL : %s\n", yytext);
+}
 
-{NUMBER} { printf("CONSTANT : %s\n", yytext); }
+/* Numeric constants */
+{NUMBER}
+{
+    printf("CONSTANT : %s\n", yytext);
+}
 
-{ID} { printf("IDENTIFIER : %s\n", yytext); }
+/* Identifiers */
+{ID}
+{
+    printf("IDENTIFIER : %s\n", yytext);
+}
 
-[ \t\n]+ { }   /* Ignore spaces */
+/* Ignore whitespace */
+[ \t\n]+   { }
 
-. { printf("UNKNOWN : %s\n", yytext); }
+/* Unknown tokens */
+.
+{
+    printf("UNKNOWN : %s\n", yytext);
+}
 
 %%
 

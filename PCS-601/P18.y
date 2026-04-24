@@ -6,28 +6,34 @@ int yylex();
 void yyerror(const char *s);
 %}
 
-%token NUMBER PLUS MINUS MUL DIV LP RP
+%token NUMBER
+
+/* Precedence rules */
+%left '+' '-'
+%left '*' '/'
 
 %%
 
 expr:
-      expr PLUS expr
-    | expr MINUS expr
-    | expr MUL expr
-    | expr DIV expr
-    | LP expr RP
+      expr '+' expr   { printf("Addition\n"); }
+    | expr '-' expr   { printf("Subtraction\n"); }
+    | expr '*' expr   { printf("Multiplication\n"); }
+    | expr '/' expr   { printf("Division\n"); }
+    | '(' expr ')'
     | NUMBER
     ;
 
 %%
 
-void yyerror(const char *s) {
+void yyerror(const char *s)
+{
     printf("Invalid Expression\n");
 }
 
-int main() {
+int main()
+{
     printf("Enter expression:\n");
-    if (yyparse() == 0)
+    if(yyparse() == 0)
         printf("Valid Expression\n");
     return 0;
 }

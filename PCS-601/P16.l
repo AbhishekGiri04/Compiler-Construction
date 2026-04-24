@@ -1,33 +1,34 @@
 %{
-#include<stdio.h>
+#include <stdio.h>
 %}
 
-%s SA SB SAB SBA
+%s A AB DEAD
 
 %%
 
-<INITIAL>a          { BEGIN SA; }
-<INITIAL>b          { BEGIN SB; }
+/* Start state */
+<INITIAL>a      { BEGIN A; }
+<INITIAL>b      { BEGIN DEAD; }
 
-<SA>a               { BEGIN SA; }
-<SA>b               { BEGIN SAB; }
+/* State A (last = a) */
+<A>a            { BEGIN A; }
+<A>b            { BEGIN AB; }
 
-<SB>b               { BEGIN SB; }
-<SB>a               { BEGIN SBA; }
+/* State AB (last = b) */
+<AB>a           { BEGIN A; }
+<AB>b           { BEGIN AB; }
 
-<SAB>a              { BEGIN SA; }
-<SAB>b              { BEGIN SAB; }
+/* Dead state */
+<DEAD>[ab]      { BEGIN DEAD; }
 
-<SBA>b              { BEGIN SB; }
-<SBA>a              { BEGIN SBA; }
+/* Invalid character */
+.               { printf("Invalid character\n"); BEGIN INITIAL; }
 
-.                   { printf("Invalid character\n"); BEGIN INITIAL; }
-
-<INITIAL,SA,SB,SAB,SBA>\n {
-    if(YYSTATE == SA || YYSTATE == SB)
+/* End of string */
+<INITIAL,A,AB,DEAD>\n
+{
+    if(YYSTATE == AB)
         printf("Accepted\n");
-    else if(YYSTATE == INITIAL)
-        printf("Empty string - Not Accepted\n");
     else
         printf("Not Accepted\n");
 
@@ -38,7 +39,7 @@
 
 int main()
 {
-    printf("Enter string (over {a,b}):\n");
+    printf("Enter strings (over {a,b}):\n");
     yylex();
     return 0;
 }

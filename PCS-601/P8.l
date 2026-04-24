@@ -2,31 +2,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE *out;
+FILE *yyin, *out;
 %}
 
 %%
 
-"//".* { /* Ignore single line comments */ }
+/* Single-line comments */
+"//".*                     { /* ignore */ }
 
-"/*"([^*]|\*+[^*/])*\*+"/" { /* Ignore multi-line comments */ }
+/* Multi-line comments */
+"/*"([^*]|\*+[^*/])*\*+"/"  { /* ignore */ }
 
-.|\n { fprintf(out,"%s",yytext); }
+/* Copy all other characters */
+.|\n                        { fprintf(out, "%s", yytext); }
 
 %%
 
-int main(int argc,char *argv[])
+int main(int argc, char *argv[])
 {
-    if(argc!=2)
+    if(argc != 2)
     {
-        printf("Usage: ./P8 input.c\n");
+        printf("Usage: ./a.out input.c\n");
         return 1;
     }
 
-    yyin=fopen(argv[1],"r");
-    out=fopen("out.c","w");
+    yyin = fopen(argv[1], "r");
+    out = fopen("out.c", "w");
 
-    if(yyin==NULL || out==NULL)
+    if(yyin == NULL || out == NULL)
     {
         printf("File Error\n");
         return 1;

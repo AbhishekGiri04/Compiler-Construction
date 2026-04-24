@@ -2,16 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE *out;
+FILE *yyin, *out;
 %}
 
 %%
 
-\<[^>]+\> {
-    fprintf(out,"%s\n",yytext);
+/* Match HTML tags */
+<[^>]+> 
+{
+    fprintf(out, "%s\n", yytext);
 }
 
-.|\n { }
+/* Ignore everything else */
+.|\n   { }
 
 %%
 
@@ -25,8 +28,8 @@ int main()
     printf("Enter output text file name: ");
     scanf("%s", outfile);
 
-    yyin = fopen(infile,"r");
-    out = fopen(outfile,"w");
+    yyin = fopen(infile, "r");
+    out = fopen(outfile, "w");
 
     if(yyin == NULL || out == NULL)
     {

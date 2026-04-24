@@ -2,19 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int yylex();
 void yyerror(const char *s);
+int yylex();
 %}
 
 %token NUMBER
 
+%left '+' '-'
+%left '*' '/'
+
 %%
 
+input:
+      expr '\n'   { printf("Valid Expression\n"); }
+    ;
+
 expr:
-      expr '+' expr   { printf("Reduce +\n"); }
-    | expr '-' expr   { printf("Reduce -\n"); }
-    | expr '*' expr   { printf("Reduce *\n"); }
-    | expr '/' expr   { printf("Reduce /\n"); }
+      expr '+' expr
+    | expr '-' expr
+    | expr '*' expr
+    | expr '/' expr
     | '(' expr ')'
     | NUMBER
     ;
@@ -28,7 +35,7 @@ void yyerror(const char *s)
 
 int main()
 {
-    printf("Enter expression:\n");
+    printf("Enter arithmetic expression:\n");
     yyparse();
     return 0;
 }

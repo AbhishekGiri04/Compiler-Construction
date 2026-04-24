@@ -5,17 +5,25 @@ int count = 1;
 
 %%
 
-[-]?[0-9]+\.[0-9]+\n { printf("%d) This is a Floating Point Number\n", count++); }
+^[-]?[0-9]+\.[0-9]+$ {
+    printf("%d) This is a Floating Point Number\n", count++);
+}
 
-[-]?[0-9]+\n { printf("%d) This is an Integer Number\n", count++); }
+^[-]?[0-9]+$ {
+    printf("%d) This is an Integer Number\n", count++);
+}
 
-.*\n { printf("%d) This is not a Valid Number\n", count++); }
+^.*$ {
+    printf("%d) This is not a Valid Number\n", count++);
+}
+
+\n   { /* ignore newline */ }
 
 %%
 
 int main()
 {
-    printf("Enter any number you want to check:\n");
+    printf("Enter numbers (Press Ctrl+D to stop):\n");
     yylex();
     return 0;
 }

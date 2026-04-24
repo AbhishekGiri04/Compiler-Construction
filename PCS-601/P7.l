@@ -2,22 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE *out;
+FILE *yyin, *out;
 int space_flag = 0;
 %}
 
 %%
 
-[ \t\n]+ {
-    if(!space_flag)
+/* Match one or more whitespace characters */
+[ \t\n]+
+{
+    if(space_flag == 0)
     {
-        fprintf(out," ");
+        fprintf(out, " ");
         space_flag = 1;
     }
 }
 
-[^ \t\n]+ {
-    fprintf(out,"%s",yytext);
+/* Match non-whitespace characters */
+[^ \t\n]+
+{
+    fprintf(out, "%s", yytext);
     space_flag = 0;
 }
 
@@ -25,8 +29,8 @@ int space_flag = 0;
 
 int main()
 {
-    yyin = fopen("Input.txt","r");
-    out = fopen("Output.txt","w");
+    yyin = fopen("Input.txt", "r");
+    out = fopen("Output.txt", "w");
 
     if(yyin == NULL || out == NULL)
     {

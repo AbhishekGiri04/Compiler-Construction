@@ -10,10 +10,10 @@ int others = 0;
 
 %%
 
-\n      { lines++; }        /* Count new lines */
-" "     { spaces++; }       /* Count spaces */
-\t      { tabs++; }         /* Count tab characters */
-.       { others++; }       /* Count remaining characters */
+\n      { lines++; }          /* Count new lines */
+" "     { spaces++; }         /* Count spaces */
+\t      { tabs++; }           /* Count tab characters */
+.       { others++; }         /* Count all other characters */
 
 %%
 
