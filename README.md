@@ -4,10 +4,10 @@
 
 <h1>🔧 Compiler Construction — Lexical Analysis & Parsing Fundamentals</h1>
 
-<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>18 Lex/Flex & Yacc programs</b> covering tokenization, pattern matching, DFA simulation, parsing, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
+<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>20 Lex/Flex & Yacc programs</b> covering tokenization, pattern matching, DFA simulation, parsing, expression evaluation, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
 
 <p style="font-size: 1.2em; color: #bf360c; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 20px; border-radius: 12px; max-width: 800px; margin: 20px auto; line-height: 1.6; border-left: 4px solid #e65100;">
-📚 <b>18 Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 🌳 <b>Yacc Parsing</b> | 📄 <b>C Implementation</b>
+📚 <b>20 Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 🌳 <b>Yacc Parsing</b> | 🧮 <b>Expression Evaluation</b> | 📄 <b>C Implementation</b>
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/C-Programming-00599C?style=for-the-badge&logo=c&logoColor=white"/>
   <img src="https://img.shields.io/badge/Compiler-Design-4CAF50?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Lexical-Analysis-FF9800?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Programs-18-blueviolet?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Programs-20-blueviolet?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge"/>
 </p>
@@ -54,10 +54,15 @@ Compiler-Construction/
 │   ├── 📄 P17.l                         # DFA — accept strings matching pattern abb(a|b)*
 │   │
 │   ├── ── Lex + Yacc Programs ──
+│   ├── 📄 P17.y                         # Yacc — standalone arithmetic expression validator
 │   ├── 📄 P18.l                         # Lexer for arithmetic expression validator
 │   ├── 📄 P18.y                         # Yacc grammar — validates arithmetic expressions
 │   ├── 📄 P18.tab.c                     # Auto-generated Yacc C output (do not edit)
 │   ├── 📄 P18.tab.h                     # Auto-generated Yacc header (do not edit)
+│   ├── 📄 P19.l                         # Lexer for infix to postfix converter
+│   ├── 📄 P19.y                         # Yacc grammar — converts infix to postfix notation
+│   ├── 📄 P20.l                         # Lexer for arithmetic calculator
+│   ├── 📄 P20.y                         # Yacc grammar — evaluates arithmetic expressions
 │   │
 │   ├── ── Input / Output Files ──
 │   ├── 📄 Input.txt                     # Sample text input (used by P6, P7)
@@ -129,7 +134,10 @@ Compiler-Construction/
 
 | # | 📄 Files | 📚 Concept |
 |---|---------|------------|
+| 17y | [P17.y](PCS-601/P17.y) | Standalone Yacc grammar — validates arithmetic expressions with precedence |
 | 18 | [P18.l](PCS-601/P18.l) + [P18.y](PCS-601/P18.y) | Arithmetic expression validator using Lex tokenizer + Yacc grammar parser |
+| 19 | [P19.l](PCS-601/P19.l) + [P19.y](PCS-601/P19.y) | Infix to postfix converter — Lex tokenizer + Yacc grammar with `%union` |
+| 20 | [P20.l](PCS-601/P20.l) + [P20.y](PCS-601/P20.y) | Arithmetic calculator — evaluates expressions and prints result, handles division by zero |
 
 ---
 
@@ -155,7 +163,7 @@ sudo apt-get install flex bison
 flex --version && bison --version
 ```
 
-### Run Any Program
+### Run Any Lex Program
 
 ```bash
 cd PCS-601
@@ -176,22 +184,24 @@ gcc lex.yy.c -o P2 -ll
 # P6, P7 — reads from Input.txt
 flex P6.l && gcc lex.yy.c -o P6 -ll && ./P6
 
-# P7 — writes compressed output to Output.txt
-flex P7.l && gcc lex.yy.c -o P7 -ll && ./P7
-
 # P8 — removes comments from a C file
 flex P8.l && gcc lex.yy.c -o P8 -ll && ./P8 input.c
 
 # P9 — extracts HTML tags (prompts for filenames)
 flex P9.l && gcc lex.yy.c -o P9 -ll && ./P9
-# Enter: sample.html → then output filename
+
+# P17.y — standalone Yacc arithmetic validator
+yacc P17.y && gcc y.tab.c -o P17y -ly && ./P17y
 
 # P18 — Lex + Yacc arithmetic expression validator
-bison -d P18.y                          # generates P18.tab.c and P18.tab.h
-flex P18.l                              # generates lex.yy.c
-gcc P18.tab.c lex.yy.c -o P18 -ll      # compile both
-./P18
-# Enter: 3+5*(2-1)
+bison -d P18.y && flex P18.l && gcc P18.tab.c lex.yy.c -o P18 -ll && ./P18
+
+# P19 — Lex + Yacc infix to postfix converter
+yacc -d P19.y && flex P19.l && gcc y.tab.c lex.yy.c -o P19 -ll && ./P19
+
+# P20 — Lex + Yacc arithmetic calculator
+yacc -d P20.y && flex P20.l && gcc y.tab.c lex.yy.c -o P20 -ll && ./P20
+# Enter: 3+5*(2-1)   →   Result = 8
 ```
 
 > No external dependencies — just Flex, Bison/Yacc, and GCC.
@@ -210,7 +220,9 @@ After exploring this project, you will understand:
 ✅ **File I/O in Lex** — Using `yyin`, `yyout`, `fopen`, `fprintf`  
 ✅ **Regex Validation** — Email addresses, identifiers, numbers  
 ✅ **HTML Processing** — Extracting tags from real HTML files  
-✅ **Yacc / Bison** — Writing grammars, tokens, and expression parsers  
+✅ **Yacc / Bison** — Writing grammars, tokens, precedence, and expression parsers  
+✅ **Infix to Postfix** — Converting expressions using Yacc `%union` and semantic actions  
+✅ **Expression Evaluation** — Computing arithmetic results with division-by-zero handling  
 ✅ **Lex + Yacc Integration** — Connecting a lexer and parser end-to-end  
 
 ---
@@ -241,7 +253,7 @@ After exploring this project, you will understand:
 <tr>
 <td><img src="https://img.shields.io/badge/Bison-Yacc-9C27B0?style=for-the-badge&logo=gnu&logoColor=white"/></td>
 <td>Parser Generator</td>
-<td>Grammar rules, token definitions, expression parsing (P18)</td>
+<td>Grammar rules, operator precedence, expression parsing, evaluation (P17y–P20)</td>
 </tr>
 <tr>
 <td><img src="https://img.shields.io/badge/GCC-Compiler-4CAF50?style=for-the-badge"/></td>
@@ -257,13 +269,14 @@ After exploring this project, you will understand:
 
 ## 🌟 Key Features
 
-- **📄 18 Programs** — 17 Lex + 1 Lex/Yacc, covering a wide range of compiler design concepts
+- **📄 20 Programs** — 17 Lex + 4 Lex/Yacc, covering a wide range of compiler design concepts
 - **📚 Educational** — Clear, well-structured code with progressive difficulty
 - **🧠 DFA Simulation** — Real finite automata implemented using Lex states
-- **🌳 Yacc Parsing** — Arithmetic expression grammar with Lex + Yacc integration (P18)
+- **🌳 Yacc Parsing** — Arithmetic expression grammar, infix-to-postfix, and full calculator
+- **🧮 Expression Evaluation** — Computes results with operator precedence and error handling
 - **🔧 Modular** — Separate `.l` / `.y` file for each concept, easy to explore
 - **⚙️ Minimal Setup** — Just Flex, Bison/Yacc, and GCC
-- **💡 Learning-Focused** — Step-by-step progression from basics to parsing
+- **💡 Learning-Focused** — Step-by-step progression from basics to full parsing
 
 ---
 
@@ -301,7 +314,7 @@ This project is open source and available under the **MIT License** — see the 
 ---
 
 **🔧 Built with ❤️ for Learning Compiler Design**  
-*Mastering Lex, Flex & C from the ground up*
+*Mastering Lex, Flex, Yacc & C from the ground up*
 
 <p style="font-size: 1.1em; color: #bf360c; margin: 20px 0;">
 <b>Compiler Construction</b> — Lexical Analysis & Parsing Fundamentals<br/>
@@ -314,7 +327,7 @@ This project is open source and available under the **MIT License** — see the 
 
 *Empowering developers with practical compiler design skills*
 
-<img src="https://img.shields.io/badge/Made%20with-Lex%20%26%20C-FF6B6B?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Made%20with-Lex%20%26%20Yacc-FF6B6B?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Purpose-Learning-4CAF50?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/PRs-Welcome-blueviolet?style=for-the-badge"/>
 
