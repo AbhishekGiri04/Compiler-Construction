@@ -2,59 +2,20 @@
 #include <stdio.h>
 %}
 
-%s INT FLOAT ID DEAD
+DIGIT   [0-9]
+LETTER  [a-zA-Z_]
 
 %%
 
-/* START STATE */
-<INITIAL>[0-9]          { BEGIN INT; yymore(); }
-<INITIAL>[a-zA-Z_]      { BEGIN ID; yymore(); }
-<INITIAL>[ \t\n]+       ;   /* ignore whitespace */
-<INITIAL>.              { BEGIN DEAD; }
+{DIGIT}+                { printf("Integer Constant: %s\n", yytext); }
 
-/* INTEGER STATE */
-<INT>[0-9]              { yymore(); }
-<INT>"."                { yymore(); BEGIN FLOAT; }
-<INT>[^0-9.\n]          {
-                          printf("Integer Constant: %s\n", yytext);
-                          BEGIN INITIAL;
-                          unput(yytext[yyleng-1]);
-                        }
-<INT>\n                 {
-                          printf("Integer Constant: %s\n", yytext);
-                          BEGIN INITIAL;
-                        }
+{DIGIT}+"."{DIGIT}+     { printf("Float Constant: %s\n", yytext); }
 
-/* FLOAT STATE */
-<FLOAT>[0-9]            { yymore(); }
-<FLOAT>[^0-9\n]         {
-                          printf("Float Constant: %s\n", yytext);
-                          BEGIN INITIAL;
-                          unput(yytext[yyleng-1]);
-                        }
-<FLOAT>\n               {
-                          printf("Float Constant: %s\n", yytext);
-                          BEGIN INITIAL;
-                        }
+{LETTER}({LETTER}|{DIGIT})*   { printf("Identifier: %s\n", yytext); }
 
-/* IDENTIFIER STATE */
-<ID>[a-zA-Z0-9_]        { yymore(); }
-<ID>[^a-zA-Z0-9_\n]     {
-                          printf("Identifier: %s\n", yytext);
-                          BEGIN INITIAL;
-                          unput(yytext[yyleng-1]);
-                        }
-<ID>\n                  {
-                          printf("Identifier: %s\n", yytext);
-                          BEGIN INITIAL;
-                        }
+[ \t\n]+                { /* ignore whitespace */ }
 
-/* DEAD STATE */
-<DEAD>[^\n]             { BEGIN DEAD; }
-<DEAD>\n                {
-                          printf("Invalid Token\n");
-                          BEGIN INITIAL;
-                        }
+.                       { printf("Invalid Token: %s\n", yytext); }
 
 %%
 

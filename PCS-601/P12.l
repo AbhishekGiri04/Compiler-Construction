@@ -7,20 +7,11 @@ int consonants = 0;
 
 %%
 
-/* Count vowels */
-[aeiouAEIOU]+      
-{ 
-    vowels += yyleng; 
-}
+[aeiouAEIOU]      { vowels++; }
 
-/* Count consonants */
-[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]+  
-{ 
-    consonants += yyleng; 
-}
+[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]   { consonants++; }
 
-/* Ignore everything else (spaces, digits, symbols, newline) */
-.|\n   { }
+[^a-zA-Z]         { }
 
 %%
 

@@ -1,13 +1,7 @@
-#include <stdio.h>
+int a = 10;
+int b = 20;
+// int sum = a + b;
+printf("%d", sum);
 
-int main()
-{
-    int a = 10;
-    int b = 20;
-
-    // int sum = a + b;
-
-    printf("%d", a+b);
-
-    return 0;
-}
+/* multi line
+comment */

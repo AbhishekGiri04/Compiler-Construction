@@ -5,16 +5,20 @@
 FILE *yyin, *out;
 %}
 
+%x COMMENT
+
 %%
 
-/* Single-line comments */
-"//".*                     { /* ignore */ }
+"//".*          { }
 
-/* Multi-line comments */
-"/*"([^*]|\*+[^*/])*\*+"/"  { /* ignore */ }
+"/*"            { BEGIN(COMMENT); }
 
-/* Copy all other characters */
-.|\n                        { fprintf(out, "%s", yytext); }
+<COMMENT>[^*\n]*        { }
+<COMMENT>"*"+[^*/\n]*   { }
+<COMMENT>\n             { }
+<COMMENT>"*/"           { BEGIN(INITIAL); }
+
+.|\n            { fprintf(out,"%s",yytext); }
 
 %%
 
@@ -22,7 +26,7 @@ int main(int argc, char *argv[])
 {
     if(argc != 2)
     {
-        printf("Usage: ./a.out input.c\n");
+        printf("Usage: ./P8 input.c\n");
         return 1;
     }
 

@@ -2,24 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ws = 0;      /* white spaces */
-int words = 0;   /* words */
-int tchar = 0;   /* total characters */
+int ws = 0;
+int words = 0;
+int tchar = 0;
+
+extern FILE *yyin;  
 %}
 
 %%
 
-[a-zA-Z]+      { words++; tchar += yyleng; }   /* count words and their characters */
+[a-zA-Z]+   { words++; tchar += yyleng; }
 
-[ \t\n]        { ws++; tchar++; }              /* count whitespace and character */
+[ \t\n]     { ws++; tchar++; }
 
-.              { tchar++; }                   /* count remaining characters */
+.           { tchar++; }
 
 %%
 
 int main()
 {
-    FILE *yyin = fopen("Input.txt","r");
+    yyin = fopen("Input.txt","r");   
 
     if(yyin == NULL)
     {

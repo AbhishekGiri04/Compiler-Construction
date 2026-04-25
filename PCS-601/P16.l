@@ -1,45 +1,38 @@
 %{
 #include <stdio.h>
+int state = 0;  // 0 = S0, 1 = S1
 %}
 
-%s A AB DEAD
+%s S0 S1 DEAD
 
 %%
 
-/* Start state */
-<INITIAL>a      { BEGIN A; }
-<INITIAL>b      { BEGIN DEAD; }
+<INITIAL>a        { BEGIN S1; state = 1; }
+<INITIAL>b        { BEGIN DEAD; state = -1; }
 
-/* State A (last = a) */
-<A>a            { BEGIN A; }
-<A>b            { BEGIN AB; }
+<S1>a             { BEGIN S1; state = 1; }
+<S1>b             { BEGIN S0; state = 0; }
 
-/* State AB (last = b) */
-<AB>a           { BEGIN A; }
-<AB>b           { BEGIN AB; }
+<S0>a             { BEGIN S1; state = 1; }
+<S0>b             { BEGIN S0; state = 0; }
 
-/* Dead state */
-<DEAD>[ab]      { BEGIN DEAD; }
+<INITIAL,S0,S1>[^ab\n] { BEGIN DEAD; state = -1; }
 
-/* Invalid character */
-.               { printf("Invalid character\n"); BEGIN INITIAL; }
-
-/* End of string */
-<INITIAL,A,AB,DEAD>\n
-{
-    if(YYSTATE == AB)
+<INITIAL,S0,S1,DEAD>\n   {
+    if(state == 0)
         printf("Accepted\n");
     else
         printf("Not Accepted\n");
 
     BEGIN INITIAL;
+    state = 0;
 }
 
 %%
 
 int main()
 {
-    printf("Enter strings (over {a,b}):\n");
+    printf("Enter string:\n");
     yylex();
     return 0;
 }

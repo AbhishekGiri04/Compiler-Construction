@@ -5,15 +5,15 @@ int count = 1;
 
 %%
 
-^[a-zA-Z_][a-zA-Z0-9_]*$ {
+[a-zA-Z_][a-zA-Z0-9_]*\n {
     printf("%d) This is a Valid Identifier\n", count++);
 }
 
-^.*$ {
+.*\n {
     printf("%d) This is not a Valid Identifier\n", count++);
 }
 
-\n   { /* ignore newline */ }
+[ \t] ;   /* ignore spaces */
 
 %%
 
