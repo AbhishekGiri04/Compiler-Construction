@@ -2,6 +2,8 @@
 lex.yy.c linguist-generated=true
 *.yy.c linguist-generated=true
 out.c linguist-generated=true
+*.tab.c linguist-generated=true
+*.tab.h linguist-generated=true
 
 # Mark .l files as Lex
 *.l linguist-language=Lex
