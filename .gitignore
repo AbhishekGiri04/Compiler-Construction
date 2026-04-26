@@ -58,7 +58,6 @@ y.tab.h
 
 # Output files
 output.txt
-out.c
 *.output
 
 # Build directories
