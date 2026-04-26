@@ -67,15 +67,15 @@
 
 
 /* First part of user prologue.  */
-#line 1 "P18.y"
+#line 1 "P17.y"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int yylex();
 void yyerror(const char *s);
+int yylex();
 
-#line 79 "P18.tab.c"
+#line 79 "P17.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -98,7 +98,7 @@ void yyerror(const char *s);
 #  endif
 # endif
 
-#include "P18.tab.h"
+#include "P17.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -1066,37 +1066,13 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* input: expr '\n'  */
-#line 17 "P18.y"
+#line 17 "P17.y"
                   { printf("Valid Expression\n"); }
-#line 1072 "P18.tab.c"
-    break;
-
-  case 3: /* expr: expr '+' expr  */
-#line 21 "P18.y"
-                      { printf("Addition\n"); }
-#line 1078 "P18.tab.c"
-    break;
-
-  case 4: /* expr: expr '-' expr  */
-#line 22 "P18.y"
-                      { printf("Subtraction\n"); }
-#line 1084 "P18.tab.c"
-    break;
-
-  case 5: /* expr: expr '*' expr  */
-#line 23 "P18.y"
-                      { printf("Multiplication\n"); }
-#line 1090 "P18.tab.c"
-    break;
-
-  case 6: /* expr: expr '/' expr  */
-#line 24 "P18.y"
-                      { printf("Division\n"); }
-#line 1096 "P18.tab.c"
+#line 1072 "P17.tab.c"
     break;
 
 
-#line 1100 "P18.tab.c"
+#line 1076 "P17.tab.c"
 
       default: break;
     }
@@ -1289,7 +1265,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 29 "P18.y"
+#line 29 "P17.y"
 
 
 void yyerror(const char *s)
@@ -1299,7 +1275,7 @@ void yyerror(const char *s)
 
 int main()
 {
-    printf("Enter expression:\n");
+    printf("Enter arithmetic expression:\n");
     yyparse();
     return 0;
 }

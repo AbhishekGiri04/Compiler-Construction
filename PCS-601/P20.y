@@ -8,7 +8,6 @@ void yyerror(const char *s);
 
 %token NUMBER
 
-/* Precedence */
 %left '+' '-'
 %left '*' '/'
 
@@ -27,15 +26,16 @@ expr:
       expr '+' expr   { $$ = $1 + $3; }
     | expr '-' expr   { $$ = $1 - $3; }
     | expr '*' expr   { $$ = $1 * $3; }
-    | expr '/' expr   { 
-                        if($3 == 0)
-                        {
-                            printf("Error: Division by zero\n");
-                            $$ = 0;
-                        }
-                        else
-                            $$ = $1 / $3; 
-                      }
+    | expr '/' expr
+        {
+            if ($3 == 0)
+            {
+                printf("Error: Division by zero\n");
+                $$ = 0;
+            }
+            else
+                $$ = $1 / $3;
+        }
     | '(' expr ')'    { $$ = $2; }
     | NUMBER          { $$ = $1; }
     ;
@@ -49,7 +49,7 @@ void yyerror(const char *s)
 
 int main()
 {
-    printf("Enter expressions (Press Ctrl+D to stop):\n");
+    printf("Enter expressions (Ctrl+D to stop):\n");
     yyparse();
     return 0;
 }

@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "P18.y"
+#line 1 "P19.y"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,7 +75,7 @@
 int yylex();
 void yyerror(const char *s);
 
-#line 79 "P18.tab.c"
+#line 79 "P19.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -98,7 +98,7 @@ void yyerror(const char *s);
 #  endif
 # endif
 
-#include "P18.tab.h"
+#include "P19.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -502,7 +502,7 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    17,    17,    21,    22,    23,    24,    25,    26
+       0,    22,    22,    26,    27,    28,    29,    30,    31
 };
 #endif
 
@@ -1066,37 +1066,49 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* input: expr '\n'  */
-#line 17 "P18.y"
-                  { printf("Valid Expression\n"); }
-#line 1072 "P18.tab.c"
+#line 22 "P19.y"
+                  { printf("\n"); }
+#line 1072 "P19.tab.c"
     break;
 
   case 3: /* expr: expr '+' expr  */
-#line 21 "P18.y"
-                      { printf("Addition\n"); }
-#line 1078 "P18.tab.c"
+#line 26 "P19.y"
+                      { printf("+ "); (yyval.num) = 0; }
+#line 1078 "P19.tab.c"
     break;
 
   case 4: /* expr: expr '-' expr  */
-#line 22 "P18.y"
-                      { printf("Subtraction\n"); }
-#line 1084 "P18.tab.c"
+#line 27 "P19.y"
+                      { printf("- "); (yyval.num) = 0; }
+#line 1084 "P19.tab.c"
     break;
 
   case 5: /* expr: expr '*' expr  */
-#line 23 "P18.y"
-                      { printf("Multiplication\n"); }
-#line 1090 "P18.tab.c"
+#line 28 "P19.y"
+                      { printf("* "); (yyval.num) = 0; }
+#line 1090 "P19.tab.c"
     break;
 
   case 6: /* expr: expr '/' expr  */
-#line 24 "P18.y"
-                      { printf("Division\n"); }
-#line 1096 "P18.tab.c"
+#line 29 "P19.y"
+                      { printf("/ "); (yyval.num) = 0; }
+#line 1096 "P19.tab.c"
+    break;
+
+  case 7: /* expr: '(' expr ')'  */
+#line 30 "P19.y"
+                      { (yyval.num) = (yyvsp[-1].num); }
+#line 1102 "P19.tab.c"
+    break;
+
+  case 8: /* expr: NUMBER  */
+#line 31 "P19.y"
+                      { printf("%d ", (yyvsp[0].num)); (yyval.num) = (yyvsp[0].num); }
+#line 1108 "P19.tab.c"
     break;
 
 
-#line 1100 "P18.tab.c"
+#line 1112 "P19.tab.c"
 
       default: break;
     }
@@ -1289,7 +1301,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 29 "P18.y"
+#line 34 "P19.y"
 
 
 void yyerror(const char *s)
@@ -1299,7 +1311,7 @@ void yyerror(const char *s)
 
 int main()
 {
-    printf("Enter expression:\n");
+    printf("Enter Infix Expression:\n");
     yyparse();
     return 0;
 }

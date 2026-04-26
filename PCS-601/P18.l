@@ -1,34 +1,26 @@
 %{
-#include <stdio.h>
-#include <stdlib.h>
-
-int yylex();
-void yyerror(const char *s);
+#include "P18.tab.h"
 %}
 
-%token NUMBER
+%%
+
+[0-9]+      { return NUMBER; }
+[ \t]       ;
+\n          { return '\n'; }
+
+"+"         { return '+'; }
+"-"         { return '-'; }
+"*"         { return '*'; }
+"/"         { return '/'; }
+
+"("         { return '('; }
+")"         { return ')'; }
+
+.           { return yytext[0]; }
 
 %%
 
-expr:
-      expr '+' expr   { printf("Reduce +\n"); }
-    | expr '-' expr   { printf("Reduce -\n"); }
-    | expr '*' expr   { printf("Reduce *\n"); }
-    | expr '/' expr   { printf("Reduce /\n"); }
-    | '(' expr ')'
-    | NUMBER
-    ;
-
-%%
-
-void yyerror(const char *s)
+int yywrap()
 {
-    printf("Invalid Expression\n");
-}
-
-int main()
-{
-    printf("Enter expression:\n");
-    yyparse();
-    return 0;
+    return 1;
 }

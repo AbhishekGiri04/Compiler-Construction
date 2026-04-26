@@ -1,5 +1,6 @@
 %{
-#include "y.tab.h"
+#include "P20.tab.h"
+#include <stdlib.h>
 %}
 
 %%

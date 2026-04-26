@@ -11,24 +11,24 @@ void yyerror(const char *s);
 }
 
 %token <num> NUMBER
+%type <num> expr
 
-/* Operator precedence */
 %left '+' '-'
 %left '*' '/'
 
 %%
 
 input:
-      expr '\n' { printf("\n"); }
+      expr '\n'   { printf("\n"); }
     ;
 
 expr:
-      expr '+' expr   { printf("+ "); }
-    | expr '-' expr   { printf("- "); }
-    | expr '*' expr   { printf("* "); }
-    | expr '/' expr   { printf("/ "); }
-    | '(' expr ')'
-    | NUMBER          { printf("%d ", $1); }
+      expr '+' expr   { printf("+ "); $$ = 0; }
+    | expr '-' expr   { printf("- "); $$ = 0; }
+    | expr '*' expr   { printf("* "); $$ = 0; }
+    | expr '/' expr   { printf("/ "); $$ = 0; }
+    | '(' expr ')'    { $$ = $2; }   // FIX HERE
+    | NUMBER          { printf("%d ", $1); $$ = $1; }
     ;
 
 %%

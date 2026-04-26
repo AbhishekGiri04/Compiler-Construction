@@ -1,24 +1,24 @@
 %{
-#include "y.tab.h"
+#include "P17.tab.h"
 %}
 
 %%
 
-[0-9]+          { return NUMBER; }
+[0-9]+      { return NUMBER; }
 
-[ \t]           ;   /* ignore whitespace */
+[ \t]       ;   // ignore spaces
 
-\n              { return '\n'; }
+\n          { return '\n'; }
 
-"+"             { return '+'; }
-"-"             { return '-'; }
-"*"             { return '*'; }
-"/"             { return '/'; }
+"+"         { return '+'; }
+"-"         { return '-'; }
+"*"         { return '*'; }
+"/"         { return '/'; }
 
-"("             { return '('; }
-")"             { return ')'; }
+"("         { return '('; }
+")"         { return ')'; }
 
-.               { return yytext[0]; }
+.           { return yytext[0]; }
 
 %%
 

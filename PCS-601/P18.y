@@ -8,11 +8,14 @@ void yyerror(const char *s);
 
 %token NUMBER
 
-/* Precedence rules */
 %left '+' '-'
 %left '*' '/'
 
 %%
+
+input:
+      expr '\n'   { printf("Valid Expression\n"); }
+    ;
 
 expr:
       expr '+' expr   { printf("Addition\n"); }
@@ -33,7 +36,6 @@ void yyerror(const char *s)
 int main()
 {
     printf("Enter expression:\n");
-    if(yyparse() == 0)
-        printf("Valid Expression\n");
+    yyparse();
     return 0;
 }
