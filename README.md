@@ -4,10 +4,10 @@
 
 <h1>🔧 Compiler Construction — Lexical Analysis & Parsing Fundamentals</h1>
 
-<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A hands-on compiler construction lab repository featuring <b>20 Lex/Flex & Yacc programs</b> covering tokenization, pattern matching, DFA simulation, parsing, expression evaluation, and real-world lexical analysis — built as part of the <b>PCS-601 Compiler Design</b> curriculum.</p>
+<p style="color: #e65100; margin: 15px 0; font-size: 1.1em;">🚀 A PCS-601 compiler design lab implementing <b>20 Lex/Flex & Yacc programs</b> — covering lexical analysis, DFA simulation, tokenization, expression parsing, infix-to-postfix conversion, and arithmetic evaluation built in C.</p>
 
 <p style="font-size: 1.2em; color: #bf360c; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 20px; border-radius: 12px; max-width: 800px; margin: 20px auto; line-height: 1.6; border-left: 4px solid #e65100;">
-📚 <b>20 Programs</b> with examples | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 🌳 <b>Yacc Parsing</b> | 🧮 <b>Expression Evaluation</b> | 📄 <b>C Implementation</b>
+📚 <b>20 Programs</b> | ⚙️ <b>DFA Simulation</b> | 🔍 <b>Lexical Analysis</b> | 🌳 <b>Yacc Parsing</b> | 🧮 <b>Expression Evaluation</b> | 📄 <b>C Implementation</b>
 </p>
 
 <p align="center">
@@ -33,43 +33,43 @@ Compiler-Construction/
 ├── 📂 PCS-601/                          # Lab practice programs
 │   │
 │   ├── ── Theory ──
-│   ├── 📄 P1.txt                        # Study of Lex & Yacc tools (theory notes)
+│   ├── 📄 P1.txt                        # Study of Lex & Yacc — tools, structure, workflow
 │   │
 │   ├── ── Lex Programs ──
-│   ├── 📄 P2.l                          # Count lines, spaces, tabs & characters
-│   ├── 📄 P3.l                          # Valid C identifier checker
+│   ├── 📄 P2.l                          # Count lines, spaces, tabs & other characters
+│   ├── 📄 P3.l                          # Valid C identifier checker (numbered output)
 │   ├── 📄 P4.l                          # Integer & floating point number classifier
-│   ├── 📄 P5.l                          # C program tokenizer (keywords, operators, etc.)
-│   ├── 📄 P6.l                          # Word, character & whitespace counter from file
-│   ├── 📄 P7.l                          # Replace multiple whitespaces with single space
-│   ├── 📄 P8.l                          # Remove single & multi-line C comments
-│   ├── 📄 P9.l                          # Extract HTML tags from HTML file
-│   ├── 📄 P10.l                         # Advanced C tokenizer (strings, char literals, etc.)
-│   ├── 📄 P11.l                         # Even / odd number checker
-│   ├── 📄 P12.l                         # Vowel & consonant counter
-│   ├── 📄 P13.l                         # Email address validator
-│   ├── 📄 P14.l                         # DFA — accept strings with even a's and even b's
-│   ├── 📄 P15.l                         # DFA-based integer, float & identifier classifier
-│   ├── 📄 P16.l                         # DFA — accept strings with odd a's or odd b's
-│   ├── 📄 P17.l                         # DFA — accept strings matching pattern abb(a|b)*
+│   ├── 📄 P5.l                          # C tokenizer — keywords, operators, separators, constants, identifiers
+│   ├── 📄 P6.l                          # Reads Input.txt — counts characters, words & whitespaces
+│   ├── 📄 P7.l                          # Reads Input.txt — compresses multiple spaces, writes Output.txt
+│   ├── 📄 P8.l                          # Strips // and /* */ comments from .c file, writes out.c
+│   ├── 📄 P9.l                          # Extracts all HTML <tags> from file, writes to output file
+│   ├── 📄 P10.l                         # Advanced C tokenizer — KEYWORD, STRING, LITERAL, CONSTANT, IDENTIFIER
+│   ├── 📄 P11.l                         # Even / odd number checker with invalid input detection
+│   ├── 📄 P12.l                         # Counts vowels and consonants in input string
+│   ├── 📄 P13.l                         # Email address validator using regex
+│   ├── 📄 P14.l                         # DFA — accepts strings with even number of a's and even b's
+│   ├── 📄 P15.l                         # DFA-based classifier — integers, floats & identifiers
+│   ├── 📄 P16.l                         # DFA — accepts strings with even number of a's (ab* pattern)
 │   │
 │   ├── ── Lex + Yacc Programs ──
-│   ├── 📄 P17.y                         # Yacc — standalone arithmetic expression validator
-│   ├── 📄 P18.l                         # Lexer for arithmetic expression validator
-│   ├── 📄 P18.y                         # Yacc grammar — validates arithmetic expressions
+│   ├── 📄 P17.l                         # Lexer for standalone arithmetic expression validator
+│   ├── 📄 P17.y                         # Yacc — standalone arithmetic expression validator with precedence
+│   ├── 📄 P18.l                         # Lexer for arithmetic expression validator (with operation labels)
+│   ├── 📄 P18.y                         # Yacc — validates expression & prints operation names
 │   ├── 📄 P18.tab.c                     # Auto-generated Yacc C output (do not edit)
 │   ├── 📄 P18.tab.h                     # Auto-generated Yacc header (do not edit)
 │   ├── 📄 P19.l                         # Lexer for infix to postfix converter
-│   ├── 📄 P19.y                         # Yacc grammar — converts infix to postfix notation
+│   ├── 📄 P19.y                         # Yacc — converts infix expression to postfix using %union
 │   ├── 📄 P20.l                         # Lexer for arithmetic calculator
-│   ├── 📄 P20.y                         # Yacc grammar — evaluates arithmetic expressions
+│   ├── 📄 P20.y                         # Yacc — evaluates arithmetic expressions, handles division by zero
 │   │
 │   ├── ── Input / Output Files ──
 │   ├── 📄 Input.txt                     # Sample text input (used by P6, P7)
-│   ├── 📄 input.c                       # Sample C file (used by P8)
+│   ├── 📄 input.c                       # Sample C source file with comments (used by P8)
 │   ├── 📄 sample.html                   # Sample HTML file (used by P9)
 │   ├── 📄 tags.txt                      # HTML tags output reference
-│   ├── 📄 lex.yy.c                      # Auto-generated Lex output (do not edit)
+│   ├── 📄 lex.yy.c                      # Auto-generated Lex C output (do not edit)
 │   │
 │   └── 📄 CompilerDesignLabManual.pdf   # Official lab manual
 │
@@ -90,54 +90,57 @@ Compiler-Construction/
 
 | # | 📄 File | 📚 Topic |
 |---|---------|----------|
-| 1 | [P1.txt](PCS-601/P1.txt) | Study of Lex & Yacc — tools, structure, workflow |
+| 1 | [P1.txt](PCS-601/P1.txt) | Study of Lex & Yacc — tools, structure, workflow, regex, auxiliary functions |
+
+---
 
 ### ⚙️ Lex Programs
 
 #### 🔤 Basics & Counting
 
-| # | 📄 File | 📚 Concept |
-|---|---------|------------|
-| 2 | [P2.l](PCS-601/P2.l) | Counts lines (`\n`), spaces, tabs, and other characters from stdin |
-| 3 | [P3.l](PCS-601/P3.l) | Validates whether input strings are valid C identifiers |
-| 4 | [P4.l](PCS-601/P4.l) | Classifies input as integer, floating point, or invalid number |
-| 11 | [P11.l](PCS-601/P11.l) | Reads a number — prints whether it is even or odd |
-| 12 | [P12.l](PCS-601/P12.l) | Counts total vowels and consonants in the entered string |
+| # | 📄 File | 📚 Concept | 💡 Key Detail |
+|---|---------|------------|---------------|
+| 2 | [P2.l](PCS-601/P2.l) | Count lines, spaces, tabs & other characters | Uses `\n`, `" "`, `\t`, `.` patterns with 4 counters |
+| 3 | [P3.l](PCS-601/P3.l) | Valid C identifier checker | Numbered output, accepts `[a-zA-Z_][a-zA-Z0-9_]*` |
+| 4 | [P4.l](PCS-601/P4.l) | Integer & floating point number classifier | Uses `^` anchors, detects invalid numbers too |
+| 11 | [P11.l](PCS-601/P11.l) | Even / odd number checker | Detects invalid alphanumeric input, uses `atoi()` |
+| 12 | [P12.l](PCS-601/P12.l) | Vowel & consonant counter | Separate regex for vowels and consonants |
 
 #### 🔍 Tokenization & Validation
 
-| # | 📄 File | 📚 Concept |
-|---|---------|------------|
-| 5 | [P5.l](PCS-601/P5.l) | Tokenizes C code into keywords, separators, operators, constants, identifiers |
-| 10 | [P10.l](PCS-601/P10.l) | Advanced tokenizer — classifies KEYWORD, STRING, LITERAL, CONSTANT, IDENTIFIER |
-| 13 | [P13.l](PCS-601/P13.l) | Validates email addresses using regex pattern matching |
+| # | 📄 File | 📚 Concept | 💡 Key Detail |
+|---|---------|------------|---------------|
+| 5 | [P5.l](PCS-601/P5.l) | C tokenizer — keywords, operators, separators, constants, identifiers | Covers `int`, `float`, `double`, `if`, `else`, `for`, `while` |
+| 10 | [P10.l](PCS-601/P10.l) | Advanced C tokenizer | Classifies KEYWORD, STRING, LITERAL, CONSTANT, IDENTIFIER with named definitions |
+| 13 | [P13.l](PCS-601/P13.l) | Email address validator | Regex: `[a-zA-Z0-9]+(\....)* @domain.tld` |
 
 #### 📂 File I/O & Processing
 
-| # | 📄 File | 📚 Concept |
-|---|---------|------------|
-| 6 | [P6.l](PCS-601/P6.l) | Reads `Input.txt` — counts total characters, words, and whitespaces |
-| 7 | [P7.l](PCS-601/P7.l) | Reads `Input.txt` — compresses multiple spaces into one, writes to `Output.txt` |
-| 8 | [P8.l](PCS-601/P8.l) | Reads a `.c` file — strips `//` and `/* */` comments, writes to `out.c` |
-| 9 | [P9.l](PCS-601/P9.l) | Reads an HTML file — extracts all `<tags>` into an output file |
+| # | 📄 File | 📚 Concept | 💡 Key Detail |
+|---|---------|------------|---------------|
+| 6 | [P6.l](PCS-601/P6.l) | Count characters, words & whitespaces from `Input.txt` | Uses `yyin = fopen(...)`, `yyleng` for char count |
+| 7 | [P7.l](PCS-601/P7.l) | Compress multiple spaces into one, write to `Output.txt` | Uses `space_flag` to avoid double spaces |
+| 8 | [P8.l](PCS-601/P8.l) | Strip `//` and `/* */` comments from `.c` file | Uses `%x COMMENT` exclusive start condition |
+| 9 | [P9.l](PCS-601/P9.l) | Extract all HTML `<tags>` from file | Prompts for input/output filenames, uses `fprintf(out, ...)` |
 
 #### 🧠 DFA Simulation
 
-| # | 📄 File | 📚 Concept |
-|---|---------|------------|
-| 14 | [P14.l](PCS-601/P14.l) | DFA simulation — accepts strings with even number of `a`'s and `b`'s |
-| 15 | [P15.l](PCS-601/P15.l) | DFA-based classifier — identifies integers, floats, and identifiers using states |
-| 16 | [P16.l](PCS-601/P16.l) | DFA simulation — accepts strings with odd number of `a`'s or odd number of `b`'s |
-| 17 | [P17.l](PCS-601/P17.l) | DFA simulation — accepts strings matching pattern `abb(a\|b)*` |
+| # | 📄 File | 📚 Concept | 💡 Key Detail |
+|---|---------|------------|---------------|
+| 14 | [P14.l](PCS-601/P14.l) | DFA — accepts strings with even `a`'s and even `b`'s | 4 states: INITIAL, A, B, C + DEAD state |
+| 15 | [P15.l](PCS-601/P15.l) | DFA-based token classifier | Identifies integers (`[0-9]+`), floats (`[0-9]+.[0-9]+`), identifiers |
+| 16 | [P16.l](PCS-601/P16.l) | DFA — accepts strings with even `a`'s | States: INITIAL, S0, S1, DEAD with `state` variable |
+
+---
 
 ### 🌳 Lex + Yacc Programs
 
-| # | 📄 Files | 📚 Concept |
-|---|---------|------------|
-| 17y | [P17.y](PCS-601/P17.y) | Standalone Yacc grammar — validates arithmetic expressions with precedence |
-| 18 | [P18.l](PCS-601/P18.l) + [P18.y](PCS-601/P18.y) | Arithmetic expression validator using Lex tokenizer + Yacc grammar parser |
-| 19 | [P19.l](PCS-601/P19.l) + [P19.y](PCS-601/P19.y) | Infix to postfix converter — Lex tokenizer + Yacc grammar with `%union` |
-| 20 | [P20.l](PCS-601/P20.l) + [P20.y](PCS-601/P20.y) | Arithmetic calculator — evaluates expressions and prints result, handles division by zero |
+| # | 📄 Files | 📚 Concept | 💡 Key Detail |
+|---|---------|------------|---------------|
+| 17 | [P17.l](PCS-601/P17.l) + [P17.y](PCS-601/P17.y) | Standalone arithmetic expression validator | Yacc with `%left` precedence, prints `Valid` / `Invalid Expression` |
+| 18 | [P18.l](PCS-601/P18.l) + [P18.y](PCS-601/P18.y) | Arithmetic expression validator with operation labels | Prints `Addition`, `Subtraction`, `Multiplication`, `Division` per operation |
+| 19 | [P19.l](PCS-601/P19.l) + [P19.y](PCS-601/P19.y) | Infix to postfix converter | Uses `%union { int num; }`, prints postfix tokens as they reduce |
+| 20 | [P20.l](PCS-601/P20.l) + [P20.y](PCS-601/P20.y) | Arithmetic calculator with result | Evaluates full expressions, prints `Result = N`, handles division by zero |
 
 ---
 
@@ -181,30 +184,38 @@ gcc lex.yy.c -o P2 -ll
 ### Program-Specific Commands
 
 ```bash
-# P6, P7 — reads from Input.txt
+# P6 — count stats from Input.txt
 flex P6.l && gcc lex.yy.c -o P6 -ll && ./P6
 
-# P8 — removes comments from a C file
+# P7 — compress spaces, writes Output.txt
+flex P7.l && gcc lex.yy.c -o P7 -ll && ./P7
+
+# P8 — strip comments from input.c, writes out.c
 flex P8.l && gcc lex.yy.c -o P8 -ll && ./P8 input.c
 
-# P9 — extracts HTML tags (prompts for filenames)
+# P9 — extract HTML tags (prompts for filenames)
 flex P9.l && gcc lex.yy.c -o P9 -ll && ./P9
+# Enter: sample.html → then output filename e.g. tags.txt
 
-# P17.y — standalone Yacc arithmetic validator
-yacc P17.y && gcc y.tab.c -o P17y -ly && ./P17y
+# P17 — Lex + Yacc standalone expression validator
+bison -d P17.y && flex P17.l && gcc P17.tab.c lex.yy.c -o P17 -ll && ./P17
+# Enter: 3+5*2   →   Valid Expression
 
-# P18 — Lex + Yacc arithmetic expression validator
+# P18 — Lex + Yacc expression validator with operation labels
 bison -d P18.y && flex P18.l && gcc P18.tab.c lex.yy.c -o P18 -ll && ./P18
+# Enter: 3+5   →   Addition \n Valid Expression
 
 # P19 — Lex + Yacc infix to postfix converter
-yacc -d P19.y && flex P19.l && gcc y.tab.c lex.yy.c -o P19 -ll && ./P19
+bison -d P19.y && flex P19.l && gcc P19.tab.c lex.yy.c -o P19 -ll && ./P19
+# Enter: 3+5*2   →   3 5 2 * +
 
 # P20 — Lex + Yacc arithmetic calculator
-yacc -d P20.y && flex P20.l && gcc y.tab.c lex.yy.c -o P20 -ll && ./P20
+bison -d P20.y && flex P20.l && gcc P20.tab.c lex.yy.c -o P20 -ll && ./P20
 # Enter: 3+5*(2-1)   →   Result = 8
+# Enter: 10/0        →   Error: Division by zero
 ```
 
-> No external dependencies — just Flex, Bison/Yacc, and GCC.
+> No external dependencies — just Flex, Bison, and GCC.
 
 ---
 
@@ -212,18 +223,20 @@ yacc -d P20.y && flex P20.l && gcc y.tab.c lex.yy.c -o P20 -ll && ./P20
 
 After exploring this project, you will understand:
 
-✅ **Lex File Structure** — Definitions, rules, and user code sections  
-✅ **Regex Patterns** — Writing patterns for token recognition  
-✅ **Lexical Analysis** — Tokenizing C source code end-to-end  
-✅ **DFA Simulation** — Implementing states with `%s` and `BEGIN`  
+✅ **Lex File Structure** — Definitions (`%{ %}`), rules (`%%`), and user code sections  
+✅ **Regex Patterns** — Writing patterns for token recognition using Lex syntax  
+✅ **Lexical Analysis** — Tokenizing C source code into keywords, operators, identifiers  
+✅ **DFA Simulation** — Implementing finite automata states using `%s` and `BEGIN`  
+✅ **Start Conditions** — Using `%x` exclusive states for comment stripping  
 ✅ **Comment Stripping** — Removing `//` and `/* */` from C programs  
-✅ **File I/O in Lex** — Using `yyin`, `yyout`, `fopen`, `fprintf`  
-✅ **Regex Validation** — Email addresses, identifiers, numbers  
+✅ **File I/O in Lex** — Using `yyin`, `yyout`, `fopen`, `fprintf`, `yyleng`  
+✅ **Regex Validation** — Email addresses, C identifiers, integers, floats  
 ✅ **HTML Processing** — Extracting tags from real HTML files  
-✅ **Yacc / Bison** — Writing grammars, tokens, precedence, and expression parsers  
-✅ **Infix to Postfix** — Converting expressions using Yacc `%union` and semantic actions  
-✅ **Expression Evaluation** — Computing arithmetic results with division-by-zero handling  
-✅ **Lex + Yacc Integration** — Connecting a lexer and parser end-to-end  
+✅ **Yacc / Bison** — Writing grammars, `%token`, `%left` precedence, semantic actions  
+✅ **Infix to Postfix** — Converting expressions using `%union` and `$$`, `$1`, `$3`  
+✅ **Expression Evaluation** — Computing arithmetic results with full operator precedence  
+✅ **Error Handling** — `yyerror()`, division-by-zero detection, invalid token reporting  
+✅ **Lex + Yacc Integration** — Connecting lexer and parser end-to-end via shared header  
 
 ---
 
@@ -243,17 +256,17 @@ After exploring this project, you will understand:
 <tr>
 <td><img src="https://img.shields.io/badge/Flex-Lex-FF6B6B?style=for-the-badge&logo=gnu&logoColor=white"/></td>
 <td>Lexical Analyzer Generator</td>
-<td>Pattern matching, token generation, DFA states, start conditions</td>
+<td>Pattern matching, token generation, DFA states, start conditions, file I/O</td>
 </tr>
 <tr>
 <td><img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white"/></td>
 <td>Implementation Language</td>
-<td>All programs, file I/O, user code sections, yywrap()</td>
+<td>All programs, counters, file handling, yywrap(), yyerror(), semantic actions</td>
 </tr>
 <tr>
 <td><img src="https://img.shields.io/badge/Bison-Yacc-9C27B0?style=for-the-badge&logo=gnu&logoColor=white"/></td>
 <td>Parser Generator</td>
-<td>Grammar rules, operator precedence, expression parsing, evaluation (P17y–P20)</td>
+<td>Grammar rules, operator precedence, %union, expression parsing & evaluation (P17–P20)</td>
 </tr>
 <tr>
 <td><img src="https://img.shields.io/badge/GCC-Compiler-4CAF50?style=for-the-badge"/></td>
@@ -269,14 +282,14 @@ After exploring this project, you will understand:
 
 ## 🌟 Key Features
 
-- **📄 20 Programs** — 17 Lex + 4 Lex/Yacc, covering a wide range of compiler design concepts
-- **📚 Educational** — Clear, well-structured code with progressive difficulty
-- **🧠 DFA Simulation** — Real finite automata implemented using Lex states
-- **🌳 Yacc Parsing** — Arithmetic expression grammar, infix-to-postfix, and full calculator
-- **🧮 Expression Evaluation** — Computes results with operator precedence and error handling
-- **🔧 Modular** — Separate `.l` / `.y` file for each concept, easy to explore
-- **⚙️ Minimal Setup** — Just Flex, Bison/Yacc, and GCC
-- **💡 Learning-Focused** — Step-by-step progression from basics to full parsing
+- **📄 20 Programs** — 16 standalone Lex + 4 Lex/Yacc pairs covering the full compiler design curriculum
+- **📚 Progressive Difficulty** — From basic character counting to full arithmetic expression evaluation
+- **🧠 DFA Simulation** — Real finite automata implemented using Lex start conditions and state variables
+- **🌳 Yacc Parsing** — Four Yacc programs covering validation, operation labeling, postfix conversion, and evaluation
+- **🧮 Expression Evaluation** — Full arithmetic calculator with operator precedence and division-by-zero handling
+- **📂 File I/O** — Programs that read/write real files using `yyin`, `yyout`, `fopen`, `fprintf`
+- **🔧 Modular Design** — Each concept in its own `.l` / `.y` file, easy to study independently
+- **⚙️ Minimal Setup** — Just Flex, Bison/Yacc, and GCC — no extra dependencies
 
 ---
 
