@@ -304,7 +304,7 @@ After exploring this project, you will understand:
 
 **👤 Abhishek Giri** — Creator & Maintainer
 
-<a href="https://linkedin.com/in/abhishek-giri04">
+<a href="https://linkedin.com/in/abhishekgiri04">
   <img src="https://img.shields.io/badge/Connect%20on-LinkedIn-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn"/>
 </a>  
 <a href="https://github.com/abhishekgiri04">
